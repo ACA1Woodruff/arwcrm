@@ -16,6 +16,24 @@ public class Customer implements Serializable {
     private int id;
     private String name;
     private String address;
+    private String contactFirstName;
+    private String contactLastName;
+
+    public String getContactLastName() {
+        return contactLastName;
+    }
+
+    public void setContactLastName(String contactLastName) {
+        this.contactLastName = contactLastName;
+    }
+
+    public String getContactFirstName() {
+        return contactFirstName;
+    }
+
+    public void setContactFirstName(String contactFirstName) {
+        this.contactFirstName = contactFirstName;
+    }
 
     public String getAddress() {
         return address;
