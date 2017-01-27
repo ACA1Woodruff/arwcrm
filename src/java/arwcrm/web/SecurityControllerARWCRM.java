@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package arwcrm.web;
+
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,6 +18,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class SecurityControllerARWCRM{
+
+    /**
+     *
+     * @param error
+     * @param logout
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error",required = false) String error,
                               @RequestParam(value = "logout",required = false) String logout){
@@ -41,6 +44,10 @@ public class SecurityControllerARWCRM{
         return model;
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public ModelAndView accesssDenied(){
 
