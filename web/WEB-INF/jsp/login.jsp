@@ -28,7 +28,7 @@
                         <img src="<c:url value="/media/img/avatar.png" />" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
                     </div>
 
-                    <form id="loginForm" class="w3-container" action="<c:url value='/j_arw_security_login' />" method='POST'>
+                    <form id="loginForm" class="w3-container" action="<c:url value='/j_spring_security_login' />" method='POST'>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                         <div class="w3-section">
                             <c:if test="${not empty msg}">

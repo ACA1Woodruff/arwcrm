@@ -14,10 +14,16 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
   
     <context:component-scan base-package="arwcrm.web"></context:component-scan>  
-  
+    <context:component-scan base-package="arwcrm.validation"></context:component-scan>
+
+
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
         <property name="prefix" value="/WEB-INF/jsp/"></property>  
         <property name="suffix" value=".jsp"></property>  
+    </bean>
+  
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/messages" />
     </bean>
   
     <mvc:resources mapping="/media/**" location="/media/" cache-period="10000" />
@@ -31,7 +37,24 @@
     <bean id="customer-dao" class="arwcrm.repository.CustomerDAO">  
         <property name="template" ref="jt"></property>  
     </bean>
-    <bean id="customer-dao" class="arwcrm.repository.CustomerDAO">  
+    
+    <bean id="employee-dao" class="arwcrm.repository.EmployeeDAO">  
         <property name="template" ref="jt"></property>  
-    </bean>  
+    </bean>
+    
+    <bean id="invoice-dao" class="arwcrm.repository.InvoiceDAO">  
+        <property name="template" ref="jt"></property>  
+    </bean>
+    
+    <bean id="jobCategory-dao" class="arwcrm.repository.JobCategoryDAO">  
+        <property name="template" ref="jt"></property>  
+    </bean>
+    
+    <bean id="jobProfiles-dao" class="arwcrm.repository.JobProfilesDAO">  
+        <property name="template" ref="jt"></property>    
+    </bean>
+    
+    <bean id="user-dao" class="arwcrm.repository.UserDAO">  
+        <property name="template" ref="jt"></property>
+    </bean>
 </beans>

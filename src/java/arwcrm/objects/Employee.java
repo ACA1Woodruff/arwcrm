@@ -1,6 +1,7 @@
 package arwcrm.objects;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  *
@@ -8,22 +9,73 @@ import java.io.Serializable;
  */
 public class Employee implements Serializable {
 
-    private int EmployeeID;
+    private String EmployeeID;
     private String employeeFirstName;
     private String employeeLastName;
-    private String address1;
-    private String address2;
+    private String addressLine1;
+    private String addressLine2;
     private String homephone;
     private String extension;
     private String email;
     private String deptNumber;
     private String title;
+    private Customer customer;
+    private Map<Integer, String> customers;
 
     /**
      *
      * @return
      */
-    public int getEmployeeID() {
+    public Map<Integer, String> getCustomers() {
+        return customers;
+    }
+
+    /**
+     *
+     * @param customers
+     */
+    public void setCustomers(Map<Integer, String> customers) {
+        this.customers = customers;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    /**
+     *
+     * @param customer
+     */
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getCustomerID() {
+        return CustomerID;
+    }
+
+    /**
+     *
+     * @param CustomerID
+     */
+    public void setCustomerID(int CustomerID) {
+        this.CustomerID = CustomerID;
+    }
+    private int CustomerID;
+
+    /**
+     *
+     * @return
+     */
+    public String getEmployeeID() {
         return EmployeeID;
     }
 
@@ -31,7 +83,7 @@ public class Employee implements Serializable {
      *
      * @param EmployeeID
      */
-    public void setEmployeeID(int EmployeeID) {
+    public void setEmployeeID(String EmployeeID) {
         this.EmployeeID = EmployeeID;
     }
 
@@ -71,32 +123,32 @@ public class Employee implements Serializable {
      *
      * @return
      */
-    public String getAddress1() {
-        return address1;
+    public String getAddressLine1() {
+        return addressLine1;
     }
 
     /**
      *
-     * @param address1
+     * @param address
      */
-    public void setAddress1(String address) {
-        this.address1 = address;
+    public void setAddressLine1(String address) {
+        this.addressLine1 = address;
     }
 
     /**
      *
      * @return
      */
-    public String getAddress2() {
-        return address2;
+    public String getAddressLine2() {
+        return addressLine2;
     }
 
     /**
      *
-     * @param address2
+     * @param address
      */
-    public void setAddress2(String address) {
-        this.address2 = address;
+    public void setAddressLine2(String address) {
+        this.addressLine2 = address;
     }
 
     /**
@@ -222,6 +274,13 @@ public class Employee implements Serializable {
         buffer.append("ID: " + this.EmployeeID + ";");
         buffer.append("EmployeeFirstName: " + employeeFirstName);
         buffer.append("EmployeeLastName: " + employeeLastName);
+        buffer.append("AddressLine1: " + addressLine1);
+        buffer.append("AddressLine2: " + addressLine2);
+        buffer.append("HomePhone: " + homephone);
+        buffer.append("email: " + email);
+        buffer.append("DeptNumber: " + deptNumber);
+        buffer.append("Title: " + title);
         return buffer.toString();
     }
+
 }

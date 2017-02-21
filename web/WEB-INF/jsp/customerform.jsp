@@ -11,15 +11,63 @@
 
     <div class="w3-card-4">
         <div class="w3-container w3-blue">
-            <h2>Header</h2>
+            <h2>Customer Information</h2>
         </div>
 
-        <form:form method="post" action="save" cssClass="w3-container">
+        <form:form method="post" action="save" cssClass="w3-container" commandName="customer">
             <div class="w3-padding-8">
-                <label><b>Name</b></label>
-                <form:input path="name" cssClass="w3-input w3-border"  />
+                <!--<label><b>Name</b></label>-->
+                <form:input path="customerID" cssClass="w3-input w3-border" placeholder="CustomerID" />
+                <form:errors path="customerID" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="name" cssClass="w3-input w3-border" placeholder="Name" />
+                <form:errors path="name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="contactLastName" cssClass="w3-input w3-border" placeholder="Contact Last Name" />
+                <form:errors path="contactLastName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="contactFirstName" cssClass="w3-input w3-border" placeholder="Contact First Name" />
+                <form:errors path="contactFirstName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="phone" cssClass="w3-input w3-border" placeholder="Phone" />
+                <form:errors path="phone" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="email" cssClass="w3-input w3-border" placeholder="Email" />
+                <form:errors path="email" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="addressLine1" cssClass="w3-input w3-border" placeholder="Address Line 1" />
+                <form:errors path="addressLine1" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="addressLine2" cssClass="w3-input w3-border" placeholder="Address Line 2" />
+                <form:errors path="addressLine2" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="addressLine3" cssClass="w3-input w3-border" placeholder="Address Line 3" />
+                <form:errors path="addressLine3" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="city" cssClass="w3-input w3-border" placeholder="City" />
+                <form:errors path="city" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="state" cssClass="w3-input w3-border" placeholder="State" />
+                <form:errors path="state" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="postalCode" cssClass="w3-input w3-border" placeholder="Postal Code" />
+                <form:errors path="postalCode" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="country" cssClass="w3-input w3-border" placeholder="Country" />
+                <form:errors path="country" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="creditLimit" cssClass="w3-input w3-border" placeholder="Credit Limit" />
+                <form:errors path="creditLimit" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />              
             </div>
 
+            <c:choose>
+                <c:when test="${not empty command.employee}">
+                    <form:hidden path="EmployeeID" />
+                    <div class="w3-padding-8">
+                        <label><b>Employee</b></label>
+                        <div class="w3-panel w3-border">
+                            <p><b>${command.employee.name}</b></p>
+                        </div>
+                    </div>
+                </c:when>
+
+                <c:otherwise>
+                    <div class="w3-padding-8">
+                        <label><b>Employee</b></label>
+                        <form:select path="EmployeeID" cssClass="w3-select w3-border">
+                            <form:option value="-1">Select Employee</form:option>
+                            <form:options items="${command.employees}"  />
+                        </form:select>
+                    </div>
+                </c:otherwise>
+            </c:choose>
             <div class="w3-padding-8">
                 <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
             </div>

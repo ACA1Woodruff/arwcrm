@@ -1,10 +1,16 @@
+<%-- 
+    Document   : viewjobcategory
+    Created on : Feb 18, 2017, 3:51:03 PM
+    Author     : awood
+--%>
+
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 
 <%@ include file="theme/header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Manage Customers</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Manage Job Categorys</b></h5>
 </header>
 
 <div class="w3-row-padding w3-margin-bottom">
@@ -23,18 +29,17 @@
 
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
         <tr>
-            <th>Customer</th>
-            <th>Password</th>
+            <th>Job Category</th>
             <th>Action</th>
         </tr>  
 
-        <c:forEach var="Customer" items="${list}">   
+        <c:forEach var="Job Category" items="${list}">   
             <tr>  
-                <td>${customer.name}</td>  
+                <td>${jobcategory.name}</td>  
                 <td>
-                    <a href="<c:url value="/customer/editcustomer/${customer.id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/customer/deletecustomer/${customer.id}" />"><button class="w3-btn w3-round w3-red">Delete</button>:onclick="return confirm('Are you sure you want to delete this user/client/interaction?');"</a>
-                    <a href="<c:url value="/employee/employeeform/${customer.id}" />"><button class="w3-btn w3-round w3-green">Add Employee</button></a>
+                    <a href="<c:url value="/jobCategory/editjobCategory/${jobCategory.id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
+                    <a href="<c:url value="/jobCategory/deletejobCategory/${jobCategory.id}" />"><button class="w3-btn w3-round w3-red">Delete</button>:onclick="return confirm('Are you sure you want to delete this user/client/interaction?');"</a>
+                    <a href="<c:url value="/jobCategory/jobCategoryform/${jobCategory.id}" />"><button class="w3-btn w3-round w3-green">Add Job Category</button></a>
                 </td>  
             </tr>  
         </c:forEach>  
@@ -43,7 +48,7 @@
     <div class="w3-padding-8">
         <ul class="w3-pagination">
             <c:forEach begin="1" end="${pages}" varStatus="p">  
-                <li><a class="<c:if test="${p.index eq page}">w3-green</c:if>" href="<c:url value="/customer/viewcustomer/${p.index}" />">${p.index}</a></li>
+                <li><a class="<c:if test="${p.index eq page}">w3-green</c:if>" href="<c:url value="/jobCategory/viewjobCategory/${p.index}" />">${p.index}</a></li>
                 </c:forEach>
         </ul>
     </div>

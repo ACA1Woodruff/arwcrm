@@ -1,6 +1,7 @@
 package arwcrm.objects;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  *
@@ -12,70 +13,59 @@ public class JobProfiles implements Serializable {
     private String jobTitle;
     private String jobDescription;
     private String jobRates;
+    
+    private JobCategory jobCategory;
+    private Map<Integer, String> jobCategorys;
 
-    /**
-     *
-     * @return
-     */
     public String getJobCode() {
         return jobCode;
     }
 
-    /**
-     *
-     * @param jobCode
-     */
     public void setJobCode(String jobCode) {
         this.jobCode = jobCode;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getJobTitle() {
         return jobTitle;
     }
 
-    /**
-     *
-     * @param jobTitle
-     */
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getJobDescription() {
         return jobDescription;
     }
 
-    /**
-     *
-     * @param jobDescription
-     */
     public void setJobDescription(String jobDescription) {
         this.jobDescription = jobDescription;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getJobRates() {
         return jobRates;
     }
 
-    /**
-     *
-     * @param jobRates
-     */
     public void setJobRates(String jobRates) {
         this.jobRates = jobRates;
     }
+
+    public JobCategory getJobCategory() {
+        return jobCategory;
+    }
+
+    public void setJobCategory(JobCategory jobCategory) {
+        this.jobCategory = jobCategory;
+    }
+
+    public Map<Integer, String> getJobCategorys() {
+        return jobCategorys;
+    }
+
+    public void setJobCategorys(Map<Integer, String> jobCategorys) {
+        this.jobCategorys = jobCategorys;
+    }
+
+    
 
     /**
      *

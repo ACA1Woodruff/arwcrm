@@ -1,6 +1,7 @@
 package arwcrm.objects;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  *
@@ -11,6 +12,41 @@ public class JobCategory implements Serializable {
     private int id;
     private String jobCategoryNames;
     private String textDescription;
+
+    private Employee employee;
+
+    /**
+     *
+     * @return
+     */
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    /**
+     *
+     * @param employee
+     */
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Map<Integer, String> getEmployees() {
+        return employees;
+    }
+
+    /**
+     *
+     * @param employees
+     */
+    public void setEmployees(Map<Integer, String> employees) {
+        this.employees = employees;
+    }
+    private Map<Integer, String> employees;
 
     /**
      *
@@ -67,14 +103,10 @@ public class JobCategory implements Serializable {
     public String toString() {
         StringBuilder buffer = new StringBuilder();
         buffer.append("ID: " + this.id + ";");
-        buffer.append("JobCategories: " + jobCategoryNames + ";");
-        buffer.append("TextDescription: " + textDescription);
+        buffer.append("Job Category: " + jobCategoryNames + ";");
+        buffer.append("Text Description: " + textDescription);
         return buffer.toString();
 
-    }
-
-    public Object getJobCode() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

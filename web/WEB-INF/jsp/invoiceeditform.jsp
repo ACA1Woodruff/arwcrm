@@ -1,6 +1,6 @@
 <%-- 
-    Document   : customereditform
-    Created on : Jan 23, 2017, 8:17:14 PM
+    Document   : invoiceeditform
+    Created on : Feb 9, 2017, 12:39:19 PM
     Author     : awood
 --%>
 
@@ -10,23 +10,23 @@
 <%@ include file="theme/header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Manage Customers > Edit Customer</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Manage Invoices > Edit Invoice</b></h5>
 </header>
 
 <div class="w3-row-padding w3-half w3-margin-bottom">
 
     <div class="w3-card-4">
         <div class="w3-container w3-blue">
-            <h2>Customer Information</h2>
+            <h2>Invoice Information</h2>
         </div>
 
-        <form:form method="POST" action="/arwcrm/customer/editsave" cssClass="w3-container" commandName="customer">
+        <form:form method="POST" action="/arwcrm/invoice/editsave" cssClass="w3-container" commandName="invoice">
             <form:hidden path="id"  />
 
             <div class="w3-padding-8">
-                <label><b>Name</b></label>
-                <form:input path="name" cssClass="w3-input w3-border"  />
-                <form:errors path="name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" /> 
+                <label><b>InvoiceID</b></label>
+                <form:input path="invoice" cssClass="w3-input w3-border"  />
+                <form:errors path="invoice" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
             </div>
 
             <div class="w3-padding-8">

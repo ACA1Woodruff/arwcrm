@@ -74,7 +74,7 @@ CREATE TABLE "Invoice"
     "BillingPhone" VARCHAR(40),
     "Fax" VARCHAR(40),
     "Total" NUMERIC(10,2) NOT NULL,
-    CONSTRAINT "PK_Invoice" PRIMARY KEY  ("InvoiceId")
+    CONSTRAINT "PK_Invoice" PRIMARY KEY  ("InvoiceID")
 );
 
 CREATE TABLE "InvoiceLine"
@@ -130,7 +130,7 @@ CREATE TABLE "Track"
 /*******************************************************************************
    Create Foreign Keys
 ********************************************************************************/
-ALTER TABLE "Album" ADD CONSTRAINT "FK_AlbumArtistId"
+ALTER TABLE "Employee" ADD CONSTRAINT "FK_AlbumArtistId"
     FOREIGN KEY ("ArtistId") REFERENCES "Artist" ("ArtistId") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 CREATE INDEX "IFK_AlbumArtistId" ON "Album" ("ArtistId");

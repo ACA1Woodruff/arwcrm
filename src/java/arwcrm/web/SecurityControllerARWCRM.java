@@ -1,6 +1,5 @@
 package arwcrm.web;
 
-
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,10 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  *
  * @author awood
- */  
-
+ */
 @Controller
-public class SecurityControllerARWCRM{
+public class SecurityControllerARWCRM {
 
     /**
      *
@@ -26,19 +24,19 @@ public class SecurityControllerARWCRM{
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login(@RequestParam(value = "error",required = false) String error,
-                              @RequestParam(value = "logout",required = false) String logout){
+    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+            @RequestParam(value = "logout", required = false) String logout) {
 
         ModelAndView model = new ModelAndView();
-        
-        if(error != null){
-            model.addObject("error","Invalid username and password!");
+
+        if (error != null) {
+            model.addObject("error", "Invalid username and password!");
         }
 
-        if(logout != null){
-            model.addObject("msg","You've been logged out successfully.");
+        if (logout != null) {
+            model.addObject("msg", "You've been logged out successfully.");
         }
-        
+
         model.setViewName("login");
 
         return model;
@@ -49,13 +47,13 @@ public class SecurityControllerARWCRM{
      * @return
      */
     @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public ModelAndView accesssDenied(){
+    public ModelAndView accesssDenied() {
 
         ModelAndView model = new ModelAndView();
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        
-        if(!(auth instanceof AnonymousAuthenticationToken)){
+
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
             System.out.println(userDetail);
 
@@ -66,5 +64,3 @@ public class SecurityControllerARWCRM{
         return model;
     }
 }
-
-
