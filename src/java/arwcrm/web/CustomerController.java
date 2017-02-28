@@ -97,12 +97,12 @@ public class CustomerController {
             start = (pageid - 1) * total + 1;
         }
 
-        List<Customer> list = cdao.getCustomersByPage(start, total);
+        List<Customer> list = cdao.getCustomerByPage(start, total);
 
         HashMap<String, Object> context = new HashMap<String, Object>();
         context.put("list", list);
 
-        int count = cdao.getCustomersCount();
+        int count = cdao.getCustomerCount();
         context.put("pages", Math.ceil((float) count / (float) total));
 
         context.put("page", pageid);
