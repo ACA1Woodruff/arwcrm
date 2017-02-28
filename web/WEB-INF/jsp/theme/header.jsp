@@ -8,7 +8,7 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
-    <title> Arw Crm Manager</title>
+    <title> ARW CRM Manager</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -52,6 +52,27 @@
                     <a href="<c:url value="/customer/viewcustomer" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Customers  <i class="fa fa-caret-down"></i></a>
                     <div class="w3-dropdown-content w3-white w3-card-4">
                         <a class="w3-padding w3-dark-grey" href="<c:url value="/customer/customerform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Customer</a>
+                    </div>
+                </div>
+            
+                <div class="w3-dropdown-hover">
+                    <a href="<c:url value="/employee/viewemployee" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Employees  <i class="fa fa-caret-down"></i></a>
+                    <div class="w3-dropdown-content w3-white w3-card-4">
+                        <a class="w3-padding w3-dark-grey" href="<c:url value="/employee/employeeform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Employee</a>
+                    </div>
+                </div>
+            
+                <div class="w3-dropdown-hover">
+                    <a href="<c:url value="/invoice/viewinvoice" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Invoices  <i class="fa fa-caret-down"></i></a>
+                    <div class="w3-dropdown-content w3-white w3-card-4">
+                        <a class="w3-padding w3-dark-grey" href="<c:url value="/employee/employeeform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Invoice</a>
+                    </div>
+                </div>
+            
+                <div class="w3-dropdown-hover">
+                    <a href="<c:url value="/user/viewuser" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Users  <i class="fa fa-caret-down"></i></a>
+                    <div class="w3-dropdown-content w3-white w3-card-4">
+                        <a class="w3-padding w3-dark-grey" href="<c:url value="/user/userform" />"><i class="fa fa-plus-square fa-fw"></i>  Add User</a>
                     </div>
                 </div>
             </sec:authorize>
