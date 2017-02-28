@@ -10,7 +10,8 @@ import java.util.Map;
  */
 public class Invoice implements Serializable {
 
-    private String InvoiceID;
+    private int InvoiceID;
+    private String purchaseOrder;
     private int customerId;
     private String invoiceDate;
     private String billingAddress;
@@ -25,212 +26,112 @@ public class Invoice implements Serializable {
     private Map<Integer, String> customers;
     private Map<String, String> StatesMap;
 
-    /**
-     *
-     * @return
-     */
-    public Map<Integer, String> getCustomers() {
-        return customers;
-    }
-
-    /**
-     *
-     * @param customers
-     */
-    public void setCustomers(Map<Integer, String> customers) {
-        this.customers = customers;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    /**
-     *
-     * @param customer
-     */
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getInvoiceID() {
+    public int getInvoiceID() {
         return InvoiceID;
     }
 
-    /**
-     *
-     * @param InvoiceID
-     */
-    public void setInvoiceID(String InvoiceID) {
+    public void setInvoiceID(int InvoiceID) {
         this.InvoiceID = InvoiceID;
     }
 
-    /**
-     *
-     * @return
-     */
+    public String getPurchaseOrder() {
+        return purchaseOrder;
+    }
+
+    public void setPurchaseOrder(String purchaseOrder) {
+        this.purchaseOrder = purchaseOrder;
+    }
+
     public int getCustomerId() {
         return customerId;
     }
 
-    /**
-     *
-     * @param customerId
-     */
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getInvoiceDate() {
         return invoiceDate;
     }
 
-    /**
-     *
-     * @param invoiceDate
-     */
     public void setInvoiceDate(String invoiceDate) {
         this.invoiceDate = invoiceDate;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getBillingAddress() {
         return billingAddress;
     }
 
-    /**
-     *
-     * @param billingAddress
-     */
     public void setBillingAddress(String billingAddress) {
         this.billingAddress = billingAddress;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getBillingCity() {
         return billingCity;
     }
 
-    /**
-     *
-     * @param billingCity
-     */
     public void setBillingCity(String billingCity) {
         this.billingCity = billingCity;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getBillingState() {
         return billingState;
     }
 
-    /**
-     *
-     * @param billingState
-     */
     public void setBillingState(String billingState) {
         this.billingState = billingState;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getBillingCountry() {
         return billingCountry;
     }
 
-    /**
-     *
-     * @param billingCountry
-     */
     public void setBillingCountry(String billingCountry) {
         this.billingCountry = billingCountry;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getBillingPostalCode() {
         return billingPostalCode;
     }
 
-    /**
-     *
-     * @param billingPostalCode
-     */
     public void setBillingPostalCode(String billingPostalCode) {
         this.billingPostalCode = billingPostalCode;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getBillingPhone() {
         return billingPhone;
     }
 
-    /**
-     *
-     * @param billingPhone
-     */
     public void setBillingPhone(String billingPhone) {
         this.billingPhone = billingPhone;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getFax() {
         return fax;
     }
 
-    /**
-     *
-     * @param fax
-     */
     public void setFax(String fax) {
         this.fax = fax;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getTotal() {
         return total;
     }
 
-    /**
-     *
-     * @param total
-     */
     public void setTotal(String total) {
         this.total = total;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Map<Integer, String> getCustomers() {
+        return customers;
     }
 
     public Map<String, String> getStatesMap() {
@@ -372,6 +273,7 @@ public class Invoice implements Serializable {
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("ID: " + this.InvoiceID + ";");
+        buffer.append("PurchaseOrder: " + purchaseOrder);
         buffer.append("CustomerId: " + customerId);
         buffer.append("InvoiceDate: " + invoiceDate);
         buffer.append("BillingAddress: " + billingAddress);
