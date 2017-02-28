@@ -50,7 +50,7 @@ public class InvoiceController {
     @RequestMapping("/invoice/invoiceform")
     public ModelAndView showform() {
         Invoice invoice = new Invoice();
-        invoice.setCustomers(idao.getCustomersMap());
+        invoice.setCustomer((Customer) idao.getCustomersMap());
 
         return new ModelAndView("invoiceform", "command", invoice);
     }
@@ -58,11 +58,11 @@ public class InvoiceController {
     @RequestMapping("/invoice/invoiceform/{id}")
     public ModelAndView showformWithCustomer(@PathVariable int id) {
         Customer customer = cdao.getCustomerById(id);
-        
+
         Invoice invoice = new Invoice();
         invoice.setCustomerId(id);
         invoice.setCustomer(customer);
-        invoice.setCustomers(cdao.getCustomersMap());
+        invoice.setCustomer((Customer) cdao.getCustomerMap());
 
         return new ModelAndView("invoiceform", "command", invoice);
     }
@@ -123,7 +123,7 @@ public class InvoiceController {
     @RequestMapping(value = "/invoice/editinvoice/{id}")
     public ModelAndView edit(@PathVariable int id) {
         Invoice invoice = idao.getInvoiceById(id);
-        invoice.setCustomers(idao.getCustomersMap());
+        invoice.setCustomer((Customer) idao.getCustomersMap());
         return new ModelAndView("invoiceeditform", "command", invoice);
     }
 
