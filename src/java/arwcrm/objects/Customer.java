@@ -12,8 +12,8 @@ public class Customer implements Serializable {
 
     private String CustomerID;
     private String name;
-    private String contactLastName;
-    private String contactFirstName;
+    private String customerContactLastName;
+    private String customerContactFirstName;
     private String phone;
     private String email;
     private String addressLine1;
@@ -26,7 +26,7 @@ public class Customer implements Serializable {
 //    private String salesRepEmployeeNumber;
     private String creditLimit;
 //    private Customer customer;
-    private Map<Integer, String> customers;
+    private Map<Integer, String> customer;
     private Map<String, String> JobCatMap;
     private Map<String, String> JobProMap;
     private Map<String, String> StatesMap;
@@ -47,20 +47,20 @@ public class Customer implements Serializable {
         this.name = name;
     }
 
-    public String getContactLastName() {
-        return contactLastName;
+    public String getCustomerContactLastName() {
+        return customerContactLastName;
     }
 
-    public void setContactLastName(String contactLastName) {
-        this.contactLastName = contactLastName;
+    public void setCustomerContactLastName(String contactLastName) {
+        this.customerContactLastName = customerContactLastName;
     }
 
-    public String getContactFirstName() {
-        return contactFirstName;
+    public String getCustomerContactFirstName() {
+        return customerContactFirstName;
     }
 
-    public void setContactFirstName(String contactFirstName) {
-        this.contactFirstName = contactFirstName;
+    public void setCustomerContactFirstName(String contactFirstName) {
+        this.customerContactFirstName = customerContactFirstName;
     }
 
     public String getPhone() {
@@ -150,9 +150,9 @@ public class Customer implements Serializable {
         this.creditLimit = creditLimit;
     }
 
-    public Map<Integer, String> getCustomers() {
+    public Map<Integer, String> getCustomer() {
 
-        return customers;
+        return customer;
     }
 
     public Map<String, String> getJobCatMap() {
@@ -314,8 +314,8 @@ public class Customer implements Serializable {
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("ID: " + this.CustomerID + ";");
-        buffer.append("ContactFirstName: " + contactFirstName);
-        buffer.append("ContactLastName: " + contactLastName);
+        buffer.append("CustomerContactLastName: " + customerContactLastName);
+        buffer.append("CustomerContactFirstName: " + customerContactLastName);
         buffer.append("Phone: " + phone);
         buffer.append("Email: " + email);
         buffer.append("AddressLine1: " + addressLine1);
