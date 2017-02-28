@@ -4,7 +4,7 @@
 <%@ include file="theme/header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Manage Customers > Add Customer</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Manage Customer > Add Customer</b></h5>
 </header>
 
 <div class="w3-row-padding w3-half w3-margin-bottom">
@@ -21,10 +21,10 @@
                 <form:errors path="customerID" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="name" cssClass="w3-input w3-border" placeholder="Name" />
                 <form:errors path="name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="contactLastName" cssClass="w3-input w3-border" placeholder="Contact Last Name" />
-                <form:errors path="contactLastName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="contactFirstName" cssClass="w3-input w3-border" placeholder="Contact First Name" />
-                <form:errors path="contactFirstName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="customerContactLastName" cssClass="w3-input w3-border" placeholder="Contact Last Name" />
+                <form:errors path="customerContactLastName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="customerContactFirstName" cssClass="w3-input w3-border" placeholder="Contact First Name" />
+                <form:errors path="customerContactFirstName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="phone" cssClass="w3-input w3-border" placeholder="Phone" />
                 <form:errors path="phone" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="email" cssClass="w3-input w3-border" placeholder="Email" />
