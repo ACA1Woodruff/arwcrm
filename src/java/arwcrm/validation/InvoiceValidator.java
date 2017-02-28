@@ -30,13 +30,5 @@ public class InvoiceValidator implements Validator {
     public void validate(Object target, Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "invoiceID", "invoice.invoiceID.required");
 
-        Invoice invoice = (Invoice) target;
-        if (invoice.getInvoiceID().length() > 120) {
-            errors.rejectValue("invoiceID", "invoice.invoiceID.length");
-        }
-
-        if (!invoice.getInvoiceID().matches("^[A-Za-z0-9]*$")) {
-            errors.rejectValue("name", "invoiceID.name.pattern");
-        }
     }
 }
