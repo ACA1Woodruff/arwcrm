@@ -60,7 +60,7 @@ public class EmployeeController {
     @RequestMapping("/employee/employeeform")
     public ModelAndView showform() {
         Employee employee = new Employee();
-        employee.setCustomers(cdao.getCustomersMap());
+        employee.setCustomer((Customer) cdao.getCustomerMap());
 
         return new ModelAndView("employeeform", "command", employee);
     }
@@ -72,7 +72,7 @@ public class EmployeeController {
         Employee employee = new Employee();
         employee.setCustomerID(id);
         employee.setCustomer(customer);
-        employee.setCustomers(cdao.getCustomersMap());
+        employee.setCustomer((Customer) cdao.getCustomerMap());
 
         return new ModelAndView("employeeform", "command", employee);
     }
