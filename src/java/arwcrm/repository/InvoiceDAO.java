@@ -71,7 +71,7 @@ public class InvoiceDAO {
         return template.query("SELECT * FROM Invoice", new RowMapper<Invoice>() {
             public Invoice mapRow(ResultSet rs, int row) throws SQLException {
                 Invoice a = new Invoice();
-                a.setInvoiceID(rs.getString("InvoiceID"));
+                a.setInvoiceID(rs.getInt("InvoiceID"));
                 a.setCustomerId(rs.getInt("CustomerId"));
                 a.setInvoiceDate(rs.getString("Invoice Date"));
                 a.setBillingAddress(rs.getString("Billing Address"));
@@ -102,7 +102,7 @@ public class InvoiceDAO {
         return template.query(sql, new RowMapper<Invoice>() {
             public Invoice mapRow(ResultSet rs, int row) throws SQLException {
                 Invoice c = new Invoice();
-                c.setInvoiceID(rs.getString(1));
+                c.setInvoiceID(rs.getInt(1));
                 c.setCustomerId(rs.getInt(2));
                 c.setBillingAddress(rs.getString(3));
                 c.setBillingCity(rs.getString(4));
