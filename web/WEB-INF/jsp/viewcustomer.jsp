@@ -23,18 +23,19 @@
 
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
         <tr>
-            <th>Customer</th>
-            <th>Password</th>
+            <th>Customer ID</th>
+            <th>Customer Name</th>
             <th>Action</th>
         </tr>  
 
-        <c:forEach var="Customer" items="${list}">   
+        <c:forEach var="customer" items="${list}">   
             <tr>  
-                <td>${customer.name}</td>  
+                <td>${customer.customerID}</td>  
+                <td>${customer.customerName}</td>  
                 <td>
-                    <a href="<c:url value="/customer/editcustomer/${customer.id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/customer/deletecustomer/${customer.id}" />"><button class="w3-btn w3-round w3-red">Delete</button>:onclick="return confirm('Are you sure you want to delete this user/client/interaction?');"</a>
-                    <a href="<c:url value="/employee/employeeform/${customer.id}" />"><button class="w3-btn w3-round w3-green">Add Employee</button></a>
+                    <a href="<c:url value="/customer/editcustomer/${customer.customerID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
+                    <a href="<c:url value="/customer/deletecustomer/${customer.customerID}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this user/client/interaction?');">Delete</button></a>
+                    <a href="<c:url value="/employee/employeeform/${customer.customerID}" />"><button class="w3-btn w3-round w3-green">Add Employee</button></a>
                 </td>  
             </tr>  
         </c:forEach>  
