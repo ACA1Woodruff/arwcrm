@@ -17,10 +17,9 @@
         <form:form method="post" action="save" cssClass="w3-container" commandName="customer">
             <div class="w3-padding-8">
                 <!--<label><b>Name</b></label>-->
-                <form:input path="customerID" cssClass="w3-input w3-border" placeholder="CustomerID" />
-                <form:errors path="customerID" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="name" cssClass="w3-input w3-border" placeholder="Name" />
-                <form:errors path="name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+
+                <form:input path="customerName" cssClass="w3-input w3-border" placeholder="Name" />
+                <form:errors path="customerName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="customerContactLastName" cssClass="w3-input w3-border" placeholder="Contact Last Name" />
                 <form:errors path="customerContactLastName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="customerContactFirstName" cssClass="w3-input w3-border" placeholder="Contact First Name" />
@@ -49,7 +48,7 @@
 
             <c:choose>
                 <c:when test="${not empty command.employee}">
-                    <form:hidden path="EmployeeID" />
+                    <form:hidden path="employeeID" />
                     <div class="w3-padding-8">
                         <label><b>Employee</b></label>
                         <div class="w3-panel w3-border">
@@ -61,7 +60,7 @@
                 <c:otherwise>
                     <div class="w3-padding-8">
                         <label><b>Employee</b></label>
-                        <form:select path="EmployeeID" cssClass="w3-select w3-border">
+                        <form:select path="employeeID" cssClass="w3-select w3-border">
                             <form:option value="-1">Select Employee</form:option>
                             <form:options items="${command.employees}"  />
                         </form:select>
