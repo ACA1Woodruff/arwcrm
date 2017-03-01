@@ -11,7 +11,7 @@ import java.util.Map;
 public class Customer implements Serializable {
 
     private String CustomerID;
-    private String name;
+    private String customerName;
     private String customerContactLastName;
     private String customerContactFirstName;
     private String phone;
@@ -23,6 +23,15 @@ public class Customer implements Serializable {
     private String state;
     private String postalCode;
     private String country;
+    private String employeeID;
+
+    public String getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(String employeeID) {
+        this.employeeID = employeeID;
+    }
 //    private String salesRepEmployeeNumber;
     private String creditLimit;
 //    private Customer customer;
@@ -39,12 +48,12 @@ public class Customer implements Serializable {
         this.CustomerID = CustomerID;
     }
 
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerName(String name) {
+        this.customerName = customerName;
     }
 
     public String getCustomerContactLastName() {
@@ -314,6 +323,7 @@ public class Customer implements Serializable {
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("ID: " + this.CustomerID + ";");
+        buffer.append("CustomerName: " + customerName);
         buffer.append("CustomerContactLastName: " + customerContactLastName);
         buffer.append("CustomerContactFirstName: " + customerContactLastName);
         buffer.append("Phone: " + phone);

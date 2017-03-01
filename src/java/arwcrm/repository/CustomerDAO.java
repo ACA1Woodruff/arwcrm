@@ -43,7 +43,7 @@ public class CustomerDAO {
      */
     public int save(Customer customer) {
         String sql = "INSERT INTO CUSTOMER (customerName,customercontactlastname,customercontactfirstname,phone,email,addressline1,addressline2,addressline3,city,state,postalcode,country) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        Object[] values = {customer.getName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry()};
+        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry()};
         return template.update(sql, values);
     }
 
@@ -54,7 +54,7 @@ public class CustomerDAO {
      */
     public int update(Customer customer) {
         String sql = "UPDATE Customer SET customerName = ? Where CustomerID = ?,customercontactLast_Name = ?,customercontactFirst_Name = ?, Phone = ?, Email = ?, addressLine1 = ?, addressLine2 = ?, addressLine3 = ?, city = ?, state = ?, postalcode = ?, country = ? WHERE CustomerID = ?";
-        Object[] values = {customer.getName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry()};
+        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry()};
         return template.update(sql, values);
     }
 
@@ -78,8 +78,8 @@ public class CustomerDAO {
             public Customer mapRow(ResultSet rs, int row) throws SQLException {
                 Customer a = new Customer();
                 a.setCustomerID(rs.getString("CustomerID"));
-                a.setName(rs.getString("CustomerContactLast_Name"));
-                a.setName(rs.getString("CustomerContactFirst_Name"));
+                a.setCustomerName(rs.getString("CustomerContactLast_Name"));
+                a.setCustomerName(rs.getString("CustomerContactFirst_Name"));
                 a.setPhone(rs.getString("Phone"));
                 a.setEmail(rs.getString("Email"));
                 a.setAddressLine1(rs.getString("AddressLine1"));
@@ -103,7 +103,7 @@ public class CustomerDAO {
      */
     public Customer getCustomerById(int CustomerID) {
         logger.info("Get Customer by ID: " + id);
-        String sql = "SELECT CustomerID AS ID, Name FROM Customer WHERE CustomerID = ?";
+        String sql = "SELECT CustomerID AS ID, Customer Name FROM Customer WHERE CustomerID = ?";
 //        String sql = "SELECT * from customer WHERE CustomerID = ?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Customer>(Customer.class));
     }
@@ -114,19 +114,20 @@ public class CustomerDAO {
             public Customer mapRow(ResultSet rs, int row) throws SQLException {
                 Customer c = new Customer();
                 c.setCustomerID(rs.getString(1));
-                c.setCustomerContactLastName(rs.getString(2));
-                c.setCustomerContactFirstName(rs.getString(3));
-                c.setPhone(rs.getString(4));
-                c.setEmail(rs.getString(5));
-                c.setAddressLine1(rs.getString(6));
-                c.setAddressLine2(rs.getString(7));
-                c.setAddressLine3(rs.getString(8));
-                c.setCity(rs.getString(9));
-                c.setState(rs.getString(10));
-                c.setPostalCode(rs.getString(11));
-                c.setCountry(rs.getString(12));
+                c.setCustomerName(rs.getString(2));
+                c.setCustomerContactLastName(rs.getString(3));
+                c.setCustomerContactFirstName(rs.getString(4));
+                c.setPhone(rs.getString(5));
+                c.setEmail(rs.getString(6));
+                c.setAddressLine1(rs.getString(7));
+                c.setAddressLine2(rs.getString(8));
+                c.setAddressLine3(rs.getString(9));
+                c.setCity(rs.getString(10));
+                c.setState(rs.getString(11));
+                c.setPostalCode(rs.getString(12));
+                c.setCountry(rs.getString(13));
 //              c.setSalesRepEmployeeNumber(rs.getString(13));
-                c.setCreditLimit(rs.getString(13));
+                c.setCreditLimit(rs.getString(14));
                 return c;
             }
 
@@ -146,7 +147,7 @@ public class CustomerDAO {
 
     public Map<Integer, String> getCustomerMap() {
         Map<Integer, String> customer = new LinkedHashMap<Integer, String>();
-        String sql = "SELECT CustomerID, Name FROM Customer ORDER BY Name";
+        String sql = "SELECT CustomerID Customer Name FROM Customer ORDER BY Customer Name";
 
         SqlRowSet rs = template.queryForRowSet(sql);
 

@@ -31,11 +31,11 @@ public class CustomerValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "customer.name.required");
 
         Customer customer = (Customer) target;
-        if (customer.getName().length() > 120) {
+        if (customer.getCustomerName().length() > 120) {
             errors.rejectValue("name", "customer.name.length");
         }
 
-        if (!customer.getName().matches("^[A-Za-z0-9]*$")) {
+        if (!customer.getCustomerName().matches("^[A-Za-z0-9]*$")) {
             errors.rejectValue("name", "customer.name.pattern");
         }
 

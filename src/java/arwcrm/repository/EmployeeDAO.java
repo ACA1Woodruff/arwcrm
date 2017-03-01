@@ -118,7 +118,7 @@ public class EmployeeDAO {
 
                 Customer customer = new Customer();
                 customer.setCustomerID(rs.getString(11));
-                customer.setName(rs.getString(12));
+                customer.setCustomerName(rs.getString(12));
                 return c;
             }
 
