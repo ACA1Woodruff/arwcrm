@@ -25,13 +25,6 @@ public class Customer implements Serializable {
     private String country;
     private String employeeID;
 
-    public String getEmployeeID() {
-        return employeeID;
-    }
-
-    public void setEmployeeID(String employeeID) {
-        this.employeeID = employeeID;
-    }
 //    private String salesRepEmployeeNumber;
     private String creditLimit;
 //    private Customer customer;
@@ -39,6 +32,18 @@ public class Customer implements Serializable {
     private Map<String, String> JobCatMap;
     private Map<String, String> JobProMap;
     private Map<String, String> StatesMap;
+
+//    public String getSalesRepEmployeeNumber() {
+//        return salesRepEmployeeNumber;
+//    }
+//
+//    public void setSalesRepEmployeeNumber(String salesRepEmployeeNumber) {
+//        this.salesRepEmployeeNumber = salesRepEmployeeNumber;
+//    }
+    public Map<Integer, String> getCustomer() {
+
+        return customer;
+    }
 
     public String getCustomerID() {
         return CustomerID;
@@ -52,7 +57,7 @@ public class Customer implements Serializable {
         return customerName;
     }
 
-    public void setCustomerName(String name) {
+    public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
 
@@ -60,7 +65,7 @@ public class Customer implements Serializable {
         return customerContactLastName;
     }
 
-    public void setCustomerContactLastName(String contactLastName) {
+    public void setCustomerContactLastName(String customerContactLastName) {
         this.customerContactLastName = customerContactLastName;
     }
 
@@ -68,7 +73,7 @@ public class Customer implements Serializable {
         return customerContactFirstName;
     }
 
-    public void setCustomerContactFirstName(String contactFirstName) {
+    public void setCustomerContactFirstName(String customerContactFirstName) {
         this.customerContactFirstName = customerContactFirstName;
     }
 
@@ -144,24 +149,20 @@ public class Customer implements Serializable {
         this.country = country;
     }
 
-//    public String getSalesRepEmployeeNumber() {
-//        return salesRepEmployeeNumber;
-//    }
-//
-//    public void setSalesRepEmployeeNumber(String salesRepEmployeeNumber) {
-//        this.salesRepEmployeeNumber = salesRepEmployeeNumber;
-//    }
+    public String getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(String employeeID) {
+        this.employeeID = employeeID;
+    }
+
     public String getCreditLimit() {
         return creditLimit;
     }
 
     public void setCreditLimit(String creditLimit) {
         this.creditLimit = creditLimit;
-    }
-
-    public Map<Integer, String> getCustomer() {
-
-        return customer;
     }
 
     public Map<String, String> getJobCatMap() {

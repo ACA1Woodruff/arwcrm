@@ -95,9 +95,11 @@ public class EmployeeDAO {
     }
 
     public List<Employee> getEmployeesByPage(int start, int total) {
-        String sql = "SELECT employee.EmployeeID, employee.employeeFirstName, employee.employeeLastName, employee.addressLine1, employee.addressLine2, employee.homephone, employee.extension, employee.email, employee.deptNumber, employee.title "
+        String sql = "SELECT employee.ID, employee.employeeLastName, employee.employeeFirstName,"
+                + " employee.address, employee.homephone, employee.extension,"
+                + " employee.email, employee.deptNumber, employee.title "
                 + "FROM Employee AS employee "
-                + "INNER JOIN Employee AS employee ON employee.EmployeeID = employee.EmployeeID "
+//                + "INNER JOIN Employee AS employee ON employee.ID = employee.EmployeeID "
                 + //                "ORDER BY employee.employeeLastName, employee.Title " + 
                 "LIMIT " + (start - 1) + "," + total;
 

@@ -36,8 +36,12 @@
                 <form:errors path="addressLine3" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="city" cssClass="w3-input w3-border" placeholder="City" />
                 <form:errors path="city" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="state" cssClass="w3-input w3-border" placeholder="State" />
+                <form:select path="State" cssClass="w3-input w3-border" cssStyle="w3-select w3-border" placeholder="State" >                    
+                    <form:options items="${customer.statesMap}" />
+                </form:select>
+
                 <form:errors path="state" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+
                 <form:input path="postalCode" cssClass="w3-input w3-border" placeholder="Postal Code" />
                 <form:errors path="postalCode" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="country" cssClass="w3-input w3-border" placeholder="Country" />
