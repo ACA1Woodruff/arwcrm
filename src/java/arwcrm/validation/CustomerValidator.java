@@ -28,21 +28,18 @@ public class CustomerValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "customer.name.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "customerName", "customer.name.required");
 
         Customer customer = (Customer) target;
         if (customer.getCustomerName().length() > 120) {
-            errors.rejectValue("name", "customer.name.length");
+            errors.rejectValue("customerName", "customer.name.length");
         }
 
         if (!customer.getCustomerName().matches("^[A-Za-z0-9]*$")) {
-            errors.rejectValue("name", "customer.name.pattern");
+            errors.rejectValue("customerName", "customer.name.pattern");
         }
 
-        if (!customer.getEmail().isEmpty()) {
-            if (!customer.getEmail().matches("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$")) {
-                errors.rejectValue("Email", "customers.Email.pattern", "default");
-            }
+       
         }
     }
-}
+

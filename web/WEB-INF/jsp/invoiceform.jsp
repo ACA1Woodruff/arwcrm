@@ -26,6 +26,8 @@
 
                 <form:input path="InvoiceID" cssClass="w3-input w3-border" placeholder="InvoiceID"  />
                 <form:errors path="InvoiceID" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="purchaseOrder" cssClass="w3-input w3-border" placeholder="purchaseOrder" />
+                <form:errors path="purchaseOrder" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="customerId" cssClass="w3-input w3-border" placeholder="CustomerID"  />
                 <form:errors path="customerId" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="invoiceDate" cssClass="w3-input w3-border" placeholder="Invoice Date"  />
@@ -39,9 +41,7 @@
                     <form:options items="${invoice.statesMap}" />
                 </form:select>
 
-                <form:errors path="state" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-
-
+                <form:errors path="billingState" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="billingCountry" cssClass="w3-input w3-border" placeholder="Billing Country"  />
                 <form:errors path="billingCountry" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="billingPostalCode" cssClass="w3-input w3-border" placeholder="Billing Postal Code"  />

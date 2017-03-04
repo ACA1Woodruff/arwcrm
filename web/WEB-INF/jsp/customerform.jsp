@@ -18,7 +18,7 @@
             <div class="w3-padding-8">
                 <!--<label><b>Name</b></label>-->
 
-                <form:input path="customerName" cssClass="w3-input w3-border" placeholder="Name" />
+                <form:input path="customerName" cssClass="w3-input w3-border" placeholder="Customer Name" />
                 <form:errors path="customerName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="customerContactLastName" cssClass="w3-input w3-border" placeholder="Contact Last Name" />
                 <form:errors path="customerContactLastName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
@@ -56,7 +56,7 @@
                     <div class="w3-padding-8">
                         <label><b>Employee</b></label>
                         <div class="w3-panel w3-border">
-                            <p><b>${command.employee.name}</b></p>
+                            <p><b>${command.employee.customerName}</b></p>
                         </div>
                     </div>
                 </c:when>

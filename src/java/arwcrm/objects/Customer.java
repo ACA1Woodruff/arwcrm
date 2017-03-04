@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class Customer implements Serializable {
 
-    private String CustomerID;
+    private int CustomerID;
     private String customerName;
     private String customerContactLastName;
     private String customerContactFirstName;
@@ -45,13 +45,15 @@ public class Customer implements Serializable {
         return customer;
     }
 
-    public String getCustomerID() {
+    public int getCustomerID() {
         return CustomerID;
     }
 
-    public void setCustomerID(String CustomerID) {
+    public void setCustomerID(int CustomerID) {
         this.CustomerID = CustomerID;
     }
+
+    
 
     public String getCustomerName() {
         return customerName;

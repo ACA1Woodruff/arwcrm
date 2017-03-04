@@ -42,8 +42,9 @@ public class CustomerDAO {
      * @return
      */
     public int save(Customer customer) {
-        String sql = "INSERT INTO CUSTOMER (customerName,customercontactlastname,customercontactfirstname,phone,email,addressline1,addressline2,addressline3,city,state,postalcode,country) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry()};
+        String sql = "INSERT INTO customer (`customerName`,`Contactlastname`,`Contactfirstname`,`customerphone`,`customeremail`,`customeraddress1`,`customeraddress2`,`customeraddress3`,`customercity`,`customerstate`,`customerpostalCode`,`customercountry`, `customercreditLimit`)"
+                + "values(?,?,?,?,?,?,?,?,?,?,?,?, ?)";
+        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry(), customer.getCreditLimit()};
         return template.update(sql, values);
     }
 
@@ -53,8 +54,9 @@ public class CustomerDAO {
      * @return
      */
     public int update(Customer customer) {
-        String sql = "UPDATE Customer SET customerName = ? Where CustomerID = ?,customercontactLast_Name = ?,customercontactFirst_Name = ?, Phone = ?, Email = ?, addressLine1 = ?, addressLine2 = ?, addressLine3 = ?, city = ?, state = ?, postalcode = ?, country = ? WHERE CustomerID = ?";
-        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry()};
+        String sql = "UPDATE Customer SET `customerName` = ?,`ContactLastName` = ?,`ContactFirstName` = ?, `customerPhone` = ?, `customerEmail` = ?, `customerAddress1` = ?, `customerAddress2` = ?, `customerAddress3` = ?, `customerCity` = ?, `customerState` = ?, `customerPostalCode` = ?, `customerCountry` = ?, `customerCreditLimit` = ?"
+                + "WHERE CustomerID = ?";
+        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry(),customer.getCreditLimit(), customer.getCustomerID()};
         return template.update(sql, values);
     }
 
@@ -77,9 +79,10 @@ public class CustomerDAO {
         return template.query("SELECT * FROM Customer", new RowMapper<Customer>() {
             public Customer mapRow(ResultSet rs, int row) throws SQLException {
                 Customer a = new Customer();
-                a.setCustomerID(rs.getString("CustomerID"));
-                a.setCustomerName(rs.getString("CustomerContactLast_Name"));
-                a.setCustomerName(rs.getString("CustomerContactFirst_Name"));
+                a.setCustomerID(rs.getInt("CustomerID"));
+                a.setCustomerName(rs.getString("customerName"));
+                a.setCustomerContactLastName(rs.getString("CustomerContactLast_Name"));
+                a.setCustomerContactFirstName(rs.getString("CustomerContactFirst_Name"));
                 a.setPhone(rs.getString("Phone"));
                 a.setEmail(rs.getString("Email"));
                 a.setAddressLine1(rs.getString("AddressLine1"));
@@ -102,10 +105,10 @@ public class CustomerDAO {
      * @return
      */
     public Customer getCustomerById(int CustomerID) {
-        logger.info("Get Customer by ID: " + id);
-        String sql = "SELECT CustomerID AS ID, Customer Name FROM Customer WHERE CustomerID = ?";
-//        String sql = "SELECT * from customer WHERE CustomerID = ?";
-        return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Customer>(Customer.class));
+//        logger.info("Get Customer by ID: " + id);
+//        String sql = "SELECT CustomerID AS ID, Customer Name FROM Customer WHERE CustomerID = ?";
+        String sql = "SELECT * from customer WHERE CustomerID = ?";
+        return template.queryForObject(sql, new Object[]{CustomerID}, new BeanPropertyRowMapper<Customer>(Customer.class));
     }
 
     public List<Customer> getCustomerByPage(int start, int total) {
@@ -113,7 +116,7 @@ public class CustomerDAO {
         return template.query(sql, new RowMapper<Customer>() {
             public Customer mapRow(ResultSet rs, int row) throws SQLException {
                 Customer c = new Customer();
-                c.setCustomerID(rs.getString(1));
+                c.setCustomerID(rs.getInt(1));
                 c.setCustomerName(rs.getString(2));
                 c.setCustomerContactLastName(rs.getString(3));
                 c.setCustomerContactFirstName(rs.getString(4));

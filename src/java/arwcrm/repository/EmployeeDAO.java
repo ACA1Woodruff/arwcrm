@@ -46,8 +46,9 @@ public class EmployeeDAO {
      * @return
      */
     public int update(Employee employee) {
-        String sql = "UPDATE Employee SET EmployeeLastName = ?,EmployeeFirstName = ?,addressLine1 = ?,addressLine2 = ?,homePhone = ?,extension = ?,mail = ?, deptNumber = ?,title = ? WHERE EmployeeId = ?";
-        Object[] values = {employee.getEmployeeLastName(), employee.getEmployeeID(), employee.getEmployeeLastName(), employee.getEmployeeFirstName(), employee.getAddressLine1(), employee.getAddressLine2(), employee.getHomephone(), employee.getExtension(), employee.getEmail(), employee.getDeptNumber(), employee.getTitle()};
+        String sql = "UPDATE Employee SET EmployeeLastName = ?,EmployeeFirstName = ?,addressLine1 = ?,addressLine2 = ?,homePhone = ?,extension = ?,email = ?, deptNumber = ?,title = ?" 
+                + "WHERE EmployeeId = ?";
+        Object[] values = {employee.getEmployeeLastName(), employee.getEmployeeFirstName(), employee.getAddressLine1(), employee.getAddressLine2(), employee.getHomephone(), employee.getExtension(), employee.getEmail(), employee.getDeptNumber(), employee.getTitle(), employee.getEmployeeID()};
         return template.update(sql, values);
     }
 
@@ -119,8 +120,8 @@ public class EmployeeDAO {
                 c.setTitle(rs.getString(10));
 
                 Customer customer = new Customer();
-                customer.setCustomerID(rs.getString(11));
-                customer.setCustomerName(rs.getString(12));
+                customer.setCustomerID(rs.getInt(1));
+                customer.setCustomerName(rs.getString(2));
                 return c;
             }
 

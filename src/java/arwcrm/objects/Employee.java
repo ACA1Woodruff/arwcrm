@@ -10,8 +10,8 @@ import java.util.Map;
 public class Employee implements Serializable {
 
     private String EmployeeID;
-    private String employeeFirstName;
     private String employeeLastName;
+    private String employeeFirstName;
     private String addressLine1;
     private String addressLine2;
     private String homephone;
@@ -91,22 +91,6 @@ public class Employee implements Serializable {
      *
      * @return
      */
-    public String getEmployeeFirstName() {
-        return employeeFirstName;
-    }
-
-    /**
-     *
-     * @param employeeFirstName
-     */
-    public void setEmployeeFirstName(String employeeFirstName) {
-        this.employeeFirstName = employeeFirstName;
-    }
-
-    /**
-     *
-     * @return
-     */
     public String getEmployeeLastName() {
         return employeeLastName;
     }
@@ -117,6 +101,22 @@ public class Employee implements Serializable {
      */
     public void setEmployeeLastName(String employeeLastName) {
         this.employeeLastName = employeeLastName;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getEmployeeFirstName() {
+        return employeeFirstName;
+    }
+
+    /**
+     *
+     * @param employeeFirstName
+     */
+    public void setEmployeeFirstName(String employeeFirstName) {
+        this.employeeFirstName = employeeFirstName;
     }
 
     /**
