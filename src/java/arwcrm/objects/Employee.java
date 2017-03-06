@@ -12,13 +12,14 @@ public class Employee implements Serializable {
     private String EmployeeID;
     private String employeeLastName;
     private String employeeFirstName;
-    private String addressLine1;
-    private String addressLine2;
-    private String homephone;
+    private String address;
+//    private String addressLine2;
+    private String homePhone;
     private String extension;
     private String email;
     private String deptNumber;
     private String title;
+    private String startDate;
     private Customer customer;
     private Map<Integer, String> customers;
 
@@ -123,48 +124,47 @@ public class Employee implements Serializable {
      *
      * @return
      */
-    public String getAddressLine1() {
-        return addressLine1;
+    public String getAddress() {
+        return address;
     }
 
     /**
      *
      * @param address
      */
-    public void setAddressLine1(String address) {
-        this.addressLine1 = address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
+//    /**
+//     *
+//     * @return
+//     */
+//    public String getAddressLine2() {
+//        return addressLine2;
+//    }
+//
+//    /**
+//     *
+//     * @param address
+//     */
+//    public void setAddressLine2(String address) {
+//        this.addressLine2 = address;
+//    }
     /**
      *
      * @return
      */
-    public String getAddressLine2() {
-        return addressLine2;
-    }
-
-    /**
-     *
-     * @param address
-     */
-    public void setAddressLine2(String address) {
-        this.addressLine2 = address;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getHomephone() {
-        return homephone;
+    public String getHomePhone() {
+        return homePhone;
     }
 
     /**
      *
      * @param homephone
      */
-    public void setHomephone(String homephone) {
-        this.homephone = homephone;
+    public void setHomePhone(String homePhone) {
+        this.homePhone = homePhone;
     }
 
     /**
@@ -235,6 +235,22 @@ public class Employee implements Serializable {
      *
      * @return
      */
+    public String getStartDate() {
+        return startDate;
+    }
+
+    /**
+     *
+     * @param start date
+     */
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    /**
+     *
+     * @return
+     */
     public String getReportsTo() {
         return reportsTo;
     }
@@ -274,12 +290,13 @@ public class Employee implements Serializable {
         buffer.append("ID: " + this.EmployeeID + ";");
         buffer.append("EmployeeFirstName: " + employeeFirstName);
         buffer.append("EmployeeLastName: " + employeeLastName);
-        buffer.append("AddressLine1: " + addressLine1);
-        buffer.append("AddressLine2: " + addressLine2);
-        buffer.append("HomePhone: " + homephone);
+        buffer.append("Address: " + address);
+//      buffer.append("AddressLine2: " + addressLine2);
+        buffer.append("HomePhone: " + homePhone);
         buffer.append("email: " + email);
         buffer.append("DeptNumber: " + deptNumber);
         buffer.append("Title: " + title);
+        buffer.append("StartDate: " + startDate);
         return buffer.toString();
     }
 

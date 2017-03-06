@@ -134,7 +134,7 @@ public class EmployeeController {
     public ModelAndView edit(@PathVariable int id) {
         Employee employee = edao.getEmployeeById(id);
 
-        employee.setCustomers(edao.getCustomersMap());
+        employee.setCustomers(edao.getCustomerMap());
 
         return new ModelAndView("employeeeditform", "command", employee);
     }

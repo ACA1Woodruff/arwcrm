@@ -22,12 +22,13 @@ import arwcrm.repository.JobProfilesDAO;
 import java.util.HashMap;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+
 /**
  *
  * @author awood
  */
 public class JobCategoryController {
- 
+
     @Autowired
     EmployeeDAO edao;
 
@@ -48,7 +49,7 @@ public class JobCategoryController {
     @RequestMapping("/jobCategory/jobCategoryform")
     public ModelAndView showform() {
         JobCategory jobCategory = new JobCategory();
-        jobCategory.setEmployees(edao.getEmployeesMap());
+        jobCategory.setEmployees(edao.getEmployeeMap());
 
         return new ModelAndView("jobCategoryform", "command", jobCategory);
     }
@@ -56,17 +57,15 @@ public class JobCategoryController {
     @RequestMapping("/jobCategory/jobCategoryform/{id}")
     public ModelAndView showformWithEmployee(@PathVariable int id) {
         Employee employee = edao.getEmployeeById(id);
-        
+
         JobCategory jobCategory = new JobCategory();
         jobCategory.setId(id);
         jobCategory.setEmployee(employee);
-        
-        jobCategory.setEmployees(edao.getEmployeesMap());
-        
+
+        jobCategory.setEmployees(edao.getEmployeeMap());
+
 //        jobCategoryController.setCustomerID(id);
 //        jobCategoryController.setCustomer(customer);
-        
-
         return new ModelAndView("jobCategoryform", "command", jobCategory);
     }
 
@@ -108,7 +107,7 @@ public class JobCategoryController {
         HashMap<String, Object> context = new HashMap<String, Object>();
         context.put("list", list);
 
-        int count = jcdao.getJobCategoryCount();        
+        int count = jcdao.getJobCategoryCount();
         context.put("pages", Math.ceil((float) count / (float) total));
 
         context.put("page", pageid);
@@ -126,8 +125,8 @@ public class JobCategoryController {
     @RequestMapping(value = "/jobCategory/editjobCategory/{id}")
     public ModelAndView edit(@PathVariable int id) {
         JobCategory jobCategory = jcdao.getJobCategoryById(id);
-        jobCategory.setEmployees(edao.getEmployeesMap());
-        
+        jobCategory.setEmployees(edao.getEmployeeMap());
+
         return new ModelAndView("jobCategoryeditform", "command", jobCategory);
     }
 
@@ -163,4 +162,3 @@ public class JobCategoryController {
         return new ModelAndView("redirect:/jobCategory/viewjobCategory");
     }
 }
-

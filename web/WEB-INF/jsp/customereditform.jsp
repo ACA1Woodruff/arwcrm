@@ -50,8 +50,8 @@
 
                 <form:input path="postalCode" cssClass="w3-input w3-border" placeholder="Postal Code" />
                 <form:errors path="postalCode" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="country" cssClass="w3-input w3-border" placeholder="Country" />
-                <form:errors path="country" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <!--<form:input path="country" cssClass="w3-input w3-border" placeholder="Country" />
+                <form:errors path="country" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />-->
                 <form:input path="creditLimit" cssClass="w3-input w3-border" placeholder="Credit Limit" />
                 <form:errors path="creditLimit" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" /> 
             </div>

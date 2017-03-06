@@ -25,17 +25,28 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 public class EmployeeDAO {
 
     JdbcTemplate template;
-    private Object id;
+//    private Object id;
 
     private static final Logger logger = Logger.getLogger(EmployeeDAO.class.getName());
+    private int id;
 
+    /**
+     *
+     * @param template
+     */
     public void setTemplate(JdbcTemplate template) {
         this.template = template;
     }
 
+    /**
+     *
+     * @param employee
+     * @return
+     */
     public int save(Employee employee) {
-        String sql = "INSERT INTO Employee (employeeLastName,employeeFirstName,addressLine1,addressLine2,homephone,extension,email,deptnumber,title) values(?,?,?,?,?,?,?,?,?,?)";
-        Object[] values = {employee.getEmployeeFirstName(), employee.getEmployeeLastName(), employee.getAddressLine1(), employee.getAddressLine2(), employee.getHomephone(), employee.getExtension(), employee.getEmail(), employee.getDeptNumber(), employee.getTitle()};
+        String sql = "INSERT INTO Employee (`employeeLastName`,`employeeFirstName`,`address`,`homePhone`,`extension`,`email`,`deptNumber`,`title`,`startDate`)"
+                + "values(?,?,?,?,?,?,?,?,?)";
+        Object[] values = {employee.getEmployeeLastName(), employee.getEmployeeFirstName(), employee.getAddress(), employee.getHomePhone(), employee.getExtension(), employee.getEmail(), employee.getDeptNumber(), employee.getTitle(), employee.getStartDate()};
 
         return template.update(sql, values);
     }
@@ -46,9 +57,11 @@ public class EmployeeDAO {
      * @return
      */
     public int update(Employee employee) {
-        String sql = "UPDATE Employee SET EmployeeLastName = ?,EmployeeFirstName = ?,addressLine1 = ?,addressLine2 = ?,homePhone = ?,extension = ?,email = ?, deptNumber = ?,title = ?" 
+        String sql = "UPDATE Employee SET `EmployeeLastName` = ?,`EmployeeFirstName` = ?,`address` = ?,`homePhone` = ?,`extension` = ?,"
+                + "`email` = ?,`deptNumber` = ?,`title` = ?, `startDate` = ?"
                 + "WHERE EmployeeId = ?";
-        Object[] values = {employee.getEmployeeLastName(), employee.getEmployeeFirstName(), employee.getAddressLine1(), employee.getAddressLine2(), employee.getHomephone(), employee.getExtension(), employee.getEmail(), employee.getDeptNumber(), employee.getTitle(), employee.getEmployeeID()};
+        Object[] values = {employee.getEmployeeLastName(), employee.getEmployeeFirstName(), employee.getAddress(), employee.getHomePhone(),
+            employee.getExtension(), employee.getEmail(), employee.getDeptNumber(), employee.getTitle(), employee.getStartDate(), employee.getEmployeeID()};
         return template.update(sql, values);
     }
 
@@ -74,12 +87,12 @@ public class EmployeeDAO {
                 a.setEmployeeID(rs.getString("EmployeeID"));
                 a.setEmployeeLastName(rs.getString("EmployeeLastName"));
                 a.setEmployeeFirstName(rs.getString("EmployeeFirstName"));
-                a.setAddressLine1(rs.getString("AddressLine1"));
-                a.setAddressLine2(rs.getString("AddressLine2"));
-                a.setHomephone(rs.getString("homePhone"));
+                a.setAddress(rs.getString("Address"));
+                a.setHomePhone(rs.getString("homePhone"));
                 a.setExtension(rs.getString("extension"));
                 a.setEmail(rs.getString("email"));
                 a.setTitle(rs.getString("title"));
+                a.setStartDate(rs.getString("startDate"));
                 return a;
             }
         });
@@ -91,33 +104,35 @@ public class EmployeeDAO {
      * @return
      */
     public Employee getEmployeeById(int EmployeeID) {
-        String sql = "SELECT employee.EmployeeID, employee.employeeFirstName, employee.employeeLastName, employee.addressLine1, employee.addressLine2, employee.homephone, employee.extension, employee.email, employee.deptNumber, employee.title WHERE EmployeeID = ?";
+        String sql = "SELECT employee.EmployeeID, employee.employeeLastName, employee.employeeFirstName, "
+                + "employee.address, employee.homePhone, employee.extension, employee.email, employee.deptNumber, "
+                + "employee.title, employee.startDate WHERE EmployeeID = ?";
         return template.queryForObject(sql, new Object[]{EmployeeID}, new BeanPropertyRowMapper<Employee>(Employee.class));
     }
 
     public List<Employee> getEmployeesByPage(int start, int total) {
-        String sql = "SELECT employee.ID, employee.employeeLastName, employee.employeeFirstName,"
-                + " employee.address, employee.homephone, employee.extension,"
-                + " employee.email, employee.deptNumber, employee.title "
-                + "FROM Employee AS employee "
+//        String sql = "SELECT employee.ID, employee.employeeLastName, employee.employeeFirstName,"
+//                + " employee.address, employee.homePhone, employee.extension,"
+//                + " employee.email, employee.deptNumber, employee.title, employee.startDate"
+//                + "FROM Employee AS employee "
 //                + "INNER JOIN Employee AS employee ON employee.ID = employee.EmployeeID "
-                + //                "ORDER BY employee.employeeLastName, employee.Title " + 
-                "LIMIT " + (start - 1) + "," + total;
+//                + //"ORDER BY employee.employeeLastName, employee.Title " + 
+//                "LIMIT " + (start - 1) + "," + total;
 
-//        String sql = "SELECT * FROM employee LIMIT " + (start - 1) + "," + total;
+        String sql = "SELECT * FROM employee LIMIT " + (start - 1) + "," + total;
         return template.query(sql, new RowMapper<Employee>() {
             public Employee mapRow(ResultSet rs, int row) throws SQLException {
                 Employee c = new Employee();
                 c.setEmployeeID(rs.getString(1));
                 c.setEmployeeLastName(rs.getString(2));
                 c.setEmployeeFirstName(rs.getString(3));
-                c.setAddressLine1(rs.getString(4));
-                c.setAddressLine2(rs.getString(5));
-                c.setHomephone(rs.getString(6));
-                c.setExtension(rs.getString(7));
-                c.setEmail(rs.getString(8));
-                c.setDeptNumber(rs.getString(9));
-                c.setTitle(rs.getString(10));
+                c.setAddress(rs.getString(4));
+                c.setHomePhone(rs.getString(5));
+                c.setExtension(rs.getString(6));
+                c.setEmail(rs.getString(7));
+                c.setDeptNumber(rs.getString(8));
+                c.setTitle(rs.getString(9));
+                c.setStartDate(rs.getString(10));
 
                 Customer customer = new Customer();
                 customer.setCustomerID(rs.getInt(1));
@@ -139,27 +154,38 @@ public class EmployeeDAO {
         return 1;
     }
 
-    public Map<Integer, String> getCustomersMap() {
-        Map<Integer, String> customers = new LinkedHashMap<Integer, String>();
-        String sql = "SELECT CustomerID, Name FROM Customer ORDER BY Name";
+    public Map<Integer, String> getEmployeeMap() {
+        Map<Integer, String> employee = new LinkedHashMap<Integer, String>();
+        String sql = "SELECT EmployeeID, Name FROM Employee ORDER BY Employee Last Name";
 
         SqlRowSet rs = template.queryForRowSet(sql);
 
         while (rs.next()) {
-            customers.put(rs.getInt(1), rs.getString(2));
+            employee.put(rs.getInt(1), rs.getString(2));
         }
-        return customers;
+        return employee;
     }
 
-    public Map<Integer, String> getEmployeesMap() {
-        Map<Integer, String> employees = new LinkedHashMap<Integer, String>();
-        String sql = "SELECT EmployeeID, Name FROM Employee ORDER BY employeeLastName, employeeFirstName";
+    public Map<Integer, String> getCustomerMap() {
+        Map<Integer, String> customer = new LinkedHashMap<Integer, String>();
+        String sql = "SELECT CustomerID, Name FROM Customer ORDER BY Customer Name";
 
         SqlRowSet rs = template.queryForRowSet(sql);
 
         while (rs.next()) {
-            employees.put(rs.getInt(1), rs.getString(2));
+            customer.put(rs.getInt(1), rs.getString(2));
         }
-        return employees;
+        return customer;
     }
+
+//    public Map<Integer, String> getEmployeeMap() {
+//        Map<Integer, String> employee = new LinkedHashMap<Integer, String>();
+//        String sql = "SELECT EmployeeID, Name FROM Employee ORDER BY Employee Last Name, Employee First Name";
+//
+//        SqlRowSet rs = template.queryForRowSet(sql);
+//
+//        while (rs.next()) {
+//            employee.put(rs.getInt(1), rs.getString(2));
+//        }
+//        return employee;
 }

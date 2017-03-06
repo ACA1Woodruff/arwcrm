@@ -103,7 +103,7 @@ public class CustomerController {
         context.put("list", list);
 
         int count = cdao.getCustomerCount();
-        context.put("pages", Math.ceil((float) count / (float) total));
+        context.put("pages", Math.ceil((float)count /(float) total));
 
         context.put("page", pageid);
 

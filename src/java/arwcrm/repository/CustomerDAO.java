@@ -42,7 +42,7 @@ public class CustomerDAO {
      * @return
      */
     public int save(Customer customer) {
-        String sql = "INSERT INTO customer (`customerName`,`Contactlastname`,`Contactfirstname`,`customerphone`,`customeremail`,`customeraddress1`,`customeraddress2`,`customeraddress3`,`customercity`,`customerstate`,`customerpostalCode`,`customercountry`, `customercreditLimit`)"
+        String sql = "INSERT INTO customer (`customerName`,`contactlastname`,`contactfirstname`,`customerphone`,`customeremail`,`customeraddress1`,`customeraddress2`,`customeraddress3`,`customercity`,`customerstate`,`customerpostalCode`,`customercountry`, `customercreditLimit`)"
                 + "values(?,?,?,?,?,?,?,?,?,?,?,?, ?)";
         Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry(), customer.getCreditLimit()};
         return template.update(sql, values);
@@ -56,7 +56,7 @@ public class CustomerDAO {
     public int update(Customer customer) {
         String sql = "UPDATE Customer SET `customerName` = ?,`contactLastName` = ?,`contactFirstName` = ?, `customerPhone` = ?, `customerEmail` = ?, `customerAddress1` = ?, `customerAddress2` = ?, `customerAddress3` = ?, `customerCity` = ?, `customerState` = ?, `customerPostalCode` = ?, `customerCountry` = ?, `customerCreditLimit` = ?"
                 + "         WHERE CustomerID = ?";
-        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry(),customer.getCreditLimit(), customer.getCustomerID()};
+        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry(), customer.getCreditLimit(), customer.getCustomerID()};
         return template.update(sql, values);
     }
 
@@ -81,8 +81,8 @@ public class CustomerDAO {
                 Customer a = new Customer();
                 a.setCustomerID(rs.getInt("CustomerID"));
                 a.setCustomerName(rs.getString("customerName"));
-                a.setCustomerContactLastName(rs.getString("CustomerContactLast_Name"));
-                a.setCustomerContactFirstName(rs.getString("CustomerContactFirst_Name"));
+                a.setCustomerContactLastName(rs.getString("CustomerContactLastName"));
+                a.setCustomerContactFirstName(rs.getString("CustomerContactFirstName"));
                 a.setPhone(rs.getString("Phone"));
                 a.setEmail(rs.getString("Email"));
                 a.setAddressLine1(rs.getString("AddressLine1"));

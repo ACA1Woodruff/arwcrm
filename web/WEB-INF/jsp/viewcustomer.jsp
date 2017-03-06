@@ -35,7 +35,7 @@
                 <td>
                     <a href="<c:url value="/customer/editcustomer/${customer.customerID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
                     <a href="<c:url value="/customer/deletecustomer/${customer.customerID}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this user/client/interaction?');">Delete</button></a>
-                    <a href="<c:url value="/employee/employeeform/${customer.customerID}" />"><button class="w3-btn w3-round w3-green">Add Employee</button></a>
+                    
                 </td>  
             </tr>  
         </c:forEach>  
