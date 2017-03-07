@@ -32,17 +32,18 @@
             <th>Employee ID</th>
             <th>Employee Last Name</th>
             <th>Employee First Name</th>
+            <th>Action</th>
         </tr>  
 
         <c:forEach var="Employee" items="${list}">   
             <tr>
-                <td>${employee.id}</td>
+                <td>${employee.iEmployeeID}</td>
                 <td>${employee.employeeLastName}</td>
                 <td>${employee.employeeFirstName}</td>
                 <td>
-                    <a href="<c:url value="/employee/editemployee/${employee.id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/employee/deleteemployee/${employee.id}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this user/client/interaction?');">Delete</button></a>
-                    <a href="<c:url value="/customer/customerform/${employee.id}" />"><button class="w3-btn w3-round w3-green">Add Employee</button></a>
+                    <a href="<c:url value="/employee/editemployee/${employee.employeeID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
+                    <a href="<c:url value="/employee/deleteemployee/${employee.employeeID}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this user/client/interaction?');">Delete</button></a>
+                    <a href="<c:url value="/customer/customerform/${employee.employeeID}" />"><button class="w3-btn w3-round w3-green">Add Employee</button></a>
                 </td>  
             </tr>  
         </c:forEach>  

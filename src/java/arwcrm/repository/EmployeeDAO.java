@@ -44,7 +44,7 @@ public class EmployeeDAO {
      * @return
      */
     public int save(Employee employee) {
-        String sql = "INSERT INTO Employee (`employeeLastName`,`employeeFirstName`,`address`,`homePhone`,`extension`,`email`,`deptNumber`,`title`,`startDate`)"
+        String sql = "INSERT INTO Employee (`employeeLastName`,`employeeFirstName`,`address`,`homePhone`,`extension`,`email`,`departmentNumber`,`title`,`startDate`)"
                 + "values(?,?,?,?,?,?,?,?,?)";
         Object[] values = {employee.getEmployeeLastName(), employee.getEmployeeFirstName(), employee.getAddress(), employee.getHomePhone(), employee.getExtension(), employee.getEmail(), employee.getDeptNumber(), employee.getTitle(), employee.getStartDate()};
 
@@ -57,9 +57,9 @@ public class EmployeeDAO {
      * @return
      */
     public int update(Employee employee) {
-        String sql = "UPDATE Employee SET `EmployeeLastName` = ?,`EmployeeFirstName` = ?,`address` = ?,`homePhone` = ?,`extension` = ?,"
-                + "`email` = ?,`deptNumber` = ?,`title` = ?, `startDate` = ?"
-                + "WHERE EmployeeId = ?";
+        String sql = "UPDATE Employee SET `employeeLastName` = ?,`employeeFirstName` = ?,`address` = ?,`homePhone` = ?,`extension` = ?,"
+                + "`email` = ?,`departmentNumber` = ?,`title` = ?, `startDate` = ?"
+                + "WHERE EmployeeID = ?";
         Object[] values = {employee.getEmployeeLastName(), employee.getEmployeeFirstName(), employee.getAddress(), employee.getHomePhone(),
             employee.getExtension(), employee.getEmail(), employee.getDeptNumber(), employee.getTitle(), employee.getStartDate(), employee.getEmployeeID()};
         return template.update(sql, values);
@@ -80,11 +80,11 @@ public class EmployeeDAO {
      *
      * @return
      */
-    public List<Employee> getEmployeesList() {
+    public List<Employee> getEmployeeList() {
         return template.query("SELECT * FROM Employee", new RowMapper<Employee>() {
             public Employee mapRow(ResultSet rs, int row) throws SQLException {
                 Employee a = new Employee();
-                a.setEmployeeID(rs.getString("EmployeeID"));
+                a.setEmployeeID(rs.getInt("EmployeeID"));
                 a.setEmployeeLastName(rs.getString("EmployeeLastName"));
                 a.setEmployeeFirstName(rs.getString("EmployeeFirstName"));
                 a.setAddress(rs.getString("Address"));
@@ -104,13 +104,14 @@ public class EmployeeDAO {
      * @return
      */
     public Employee getEmployeeById(int EmployeeID) {
-        String sql = "SELECT employee.EmployeeID, employee.employeeLastName, employee.employeeFirstName, "
-                + "employee.address, employee.homePhone, employee.extension, employee.email, employee.deptNumber, "
-                + "employee.title, employee.startDate WHERE EmployeeID = ?";
+//        String sql = "SELECT employee.EmployeeID, employee.employeeLastName, employee.employeeFirstName, "
+//                + "employee.address, employee.homePhone, employee.extension, employee.email, employee.departmentNumber, "
+//                + "employee.title, employee.startDate WHERE EmployeeID = ?";
+        String sql = "SELECT * from employee WHERE EmployeeID = ?";
         return template.queryForObject(sql, new Object[]{EmployeeID}, new BeanPropertyRowMapper<Employee>(Employee.class));
     }
 
-    public List<Employee> getEmployeesByPage(int start, int total) {
+    public List<Employee> getEmployeeByPage(int start, int total) {
 //        String sql = "SELECT employee.ID, employee.employeeLastName, employee.employeeFirstName,"
 //                + " employee.address, employee.homePhone, employee.extension,"
 //                + " employee.email, employee.deptNumber, employee.title, employee.startDate"
@@ -123,7 +124,7 @@ public class EmployeeDAO {
         return template.query(sql, new RowMapper<Employee>() {
             public Employee mapRow(ResultSet rs, int row) throws SQLException {
                 Employee c = new Employee();
-                c.setEmployeeID(rs.getString(1));
+                c.setEmployeeID(rs.getInt(1));
                 c.setEmployeeLastName(rs.getString(2));
                 c.setEmployeeFirstName(rs.getString(3));
                 c.setAddress(rs.getString(4));
@@ -144,7 +145,7 @@ public class EmployeeDAO {
 
     }
 
-    public int getEmployeesCount() {
+    public int getEmployeeCount() {
         String sql = "SELECT COUNT(EmployeeID) AS rowcount FROM Employee";
         SqlRowSet rs = template.queryForRowSet(sql);
         if (rs.next()) {

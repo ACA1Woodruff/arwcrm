@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class Employee implements Serializable {
 
-    private String EmployeeID;
+    private int EmployeeID;
     private String employeeLastName;
     private String employeeFirstName;
     private String address;
@@ -76,7 +76,7 @@ public class Employee implements Serializable {
      *
      * @return
      */
-    public String getEmployeeID() {
+    public int getEmployeeID() {
         return EmployeeID;
     }
 
@@ -84,7 +84,7 @@ public class Employee implements Serializable {
      *
      * @param EmployeeID
      */
-    public void setEmployeeID(String EmployeeID) {
+    public void setEmployeeID(int EmployeeID) {
         this.EmployeeID = EmployeeID;
     }
 

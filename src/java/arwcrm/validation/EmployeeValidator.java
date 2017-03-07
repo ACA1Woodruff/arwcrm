@@ -28,23 +28,23 @@ public class EmployeeValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "Employee.name.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "employeeLastName", "Employee.last.name.required");
 
         Employee employee = (Employee) target;
         if (employee.getEmployeeLastName().length() > 120) {
-            errors.rejectValue("name", "employee.name.length");
+            errors.rejectValue("employeeName", "employee.name.length");
         }
 
         if (employee.getEmployeeFirstName().length() > 120) {
-            errors.rejectValue("name", "employee.name.length");
+            errors.rejectValue("employeeName", "employee.name.length");
         }
 
         if (!employee.getEmployeeLastName().matches("^[A-Za-z0-9]*$")) {
-            errors.rejectValue("name", "employee.name.pattern");
+            errors.rejectValue("employeeName", "employee.name.pattern");
         }
 
         if (!employee.getEmployeeLastName().matches("^[A-Za-z0-9]*$")) {
-            errors.rejectValue("name", "employee.name.pattern");
+            errors.rejectValue("employeeName", "employee.name.pattern");
         }
     }
 }

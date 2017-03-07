@@ -86,7 +86,7 @@ public class JobCategoryDAO {
                 a.setTextDescription(rs.getString(3));
 
                 Employee employee = new Employee();
-                employee.setEmployeeID(rs.getString(4));
+                employee.setEmployeeID(rs.getInt(4));
                 employee.setEmployeeLastName(rs.getString(5));
                 employee.setEmployeeFirstName(rs.getString(6));
 

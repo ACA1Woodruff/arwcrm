@@ -101,7 +101,7 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping("/employee/viewemployee")
-    public ModelAndView viewemployee(HttpServletRequest request) {
+    public ModelAndView viewEmployee(HttpServletRequest request) {
         //List<Employee> list = dao.getEmployeesList();
         //return new ModelAndView("viewemployee","list",list);
         return this.viewemployee(1, request);
@@ -122,12 +122,12 @@ public class EmployeeController {
             start = (pageid - 1) * total + 1;
         }
 
-        List<Employee> list = edao.getEmployeesByPage(start, total);
+        List<Employee> list = edao.getEmployeeByPage(start, total);
 
         HashMap<String, Object> context = new HashMap<String, Object>();
         context.put("list", list);
 
-        int count = edao.getEmployeesCount();
+        int count = edao.getEmployeeCount();
         context.put("pages", Math.ceil((float) count / (float) total));
 
         context.put("page", pageid);
