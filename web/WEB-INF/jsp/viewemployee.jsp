@@ -36,9 +36,9 @@
 
         <c:forEach var="Employee" items="${list}">   
             <tr>
-                <td>${employee.id.name}</td>
-                <td>${employee.employeelastname}</td>
-                <td>${employee.employeefirstname}</td>
+                <td>${employee.id}</td>
+                <td>${employee.employeeLastName}</td>
+                <td>${employee.employeeFirstName}</td>
                 <td>
                     <a href="<c:url value="/employee/editemployee/${employee.id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
                     <a href="<c:url value="/employee/deleteemployee/${employee.id}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this user/client/interaction?');">Delete</button></a>

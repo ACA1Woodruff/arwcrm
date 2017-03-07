@@ -24,9 +24,26 @@
             <form:hidden path="id"  />
 
             <div class="w3-padding-8">
-                <label><b>EmployeeID</b></label>
-                <form:input path="employeeID" cssClass="w3-input w3-border"  />
-                <form:errors path="employeeID" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="id" cssClass="w3-input w3-border" placeholder="Employee ID" />
+                <form:errors path="id" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="employeeLastName" cssClass="w3-input w3-border" placeholder="Employee Last Name" />
+                <form:errors path="employeeLastName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />                              
+                <form:input path="employeeFirstName" cssClass="w3-input w3-border" placeholder="Employee First Name" />
+                <form:errors path="employeeFirstName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="address" cssClass="w3-input w3-border" placeholder="Address" />
+                <form:errors path="address" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="homePhone" cssClass="w3-input w3-border" placeholder="Home Phone" />
+                <form:errors path="homePhone" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="extension" cssClass="w3-input w3-border" placeholder="Extension" />
+                <form:errors path="extension" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="email" cssClass="w3-input w3-border" placeholder="Email" />
+                <form:errors path="email" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="departmentNumber" cssClass="w3-input w3-border" placeholder="Department Number" />
+                <form:errors path="departmentNumber" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="title" cssClass="w3-input w3-border" placeholder="Title" />
+                <form:errors path="title" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="startDate" cssClass="w3-input w3-border" placeholder="Start Date"/>
+                <form:errors path="startDate" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
             </div>
 
             <div class="w3-padding-8">

@@ -18,8 +18,8 @@ import arwcrm.objects.Message;
 import arwcrm.repository.CustomerDAO;
 import arwcrm.repository.EmployeeDAO;
 import arwcrm.repository.InvoiceDAO;
-import arwcrm.repository.JobCategoryDAO;
-import arwcrm.repository.JobProfilesDAO;
+//import arwcrm.repository.JobCategoryDAO;
+//import arwcrm.repository.JobProfilesDAO;
 import arwcrm.validation.EmployeeValidator;
 import arwcrm.validation.CustomerValidator;
 import arwcrm.validation.InvoiceValidator;
@@ -46,39 +46,41 @@ public class EmployeeController {
     CustomerDAO cdao = new CustomerDAO();
 
     @Autowired
-    InvoiceDAO idao = new InvoiceDAO();
-
-    @Autowired
-    JobCategoryDAO jcdao = new JobCategoryDAO();
-
-    @Autowired
-    JobProfilesDAO jpdao = new JobProfilesDAO();
-
-    private static final Logger logger = Logger.getLogger(EmployeeController.class.getName());
     private EmployeeValidator employeeValidator;
 
+    private static final Logger logger = Logger.getLogger(EmployeeController.class.getName());
+
+//    @Autowired
+//    InvoiceDAO idao = new InvoiceDAO();
+//    @Autowired
+//    JobCategoryDAO jcdao = new JobCategoryDAO();
+//
+//    @Autowired
+//    JobProfilesDAO jpdao = new JobProfilesDAO();  
+    /**
+     *
+     * @return
+     */
     @RequestMapping("/employee/employeeform")
     public ModelAndView showform() {
-        Employee employee = new Employee();
-        employee.setCustomer((Customer) cdao.getCustomerMap());
-
-        return new ModelAndView("employeeform", "command", employee);
+//        Employee employee = new Employee();
+//        employee.setCustomer((Customer) cdao.getCustomerMap());
+        return new ModelAndView("employeeform", "employee", new Employee());
     }
 
-    @RequestMapping("/employee/employeeform/{id}")
-    public ModelAndView showformWithCustomer(@PathVariable int id) {
-        Customer customer = cdao.getCustomerById(id);
-
-        Employee employee = new Employee();
-        employee.setCustomerID(id);
-        employee.setCustomer(customer);
-        employee.setCustomer((Customer) cdao.getCustomerMap());
-
-        return new ModelAndView("employeeform", "command", employee);
-    }
-
+    /**
+     *
+     * @param employee
+     * @param result
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/employee/save", method = RequestMethod.POST)
-    public ModelAndView save(@ModelAttribute("employee") Employee employee, HttpServletRequest request) {
+    public ModelAndView save(@ModelAttribute("employee") @Valid Employee employee, BindingResult result, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            return new ModelAndView("employeeform", "employee", employee);
+        }
+
         int r = edao.save(employee);
 
         Message msg = null;
@@ -93,14 +95,24 @@ public class EmployeeController {
         return new ModelAndView("redirect:/employee/viewemployee");
     }
 
+    /**
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping("/employee/viewemployee")
     public ModelAndView viewemployee(HttpServletRequest request) {
         //List<Employee> list = dao.getEmployeesList();
         //return new ModelAndView("viewemployee","list",list);
-
         return this.viewemployee(1, request);
     }
 
+    /**
+     *
+     * @param pageid
+     * @param request
+     * @return
+     */
     @RequestMapping("/employee/viewemployee/{pageid}")
     public ModelAndView viewemployee(@PathVariable int pageid, HttpServletRequest request) {
         int total = 25;
@@ -130,17 +142,39 @@ public class EmployeeController {
         return new ModelAndView("viewemployee", context);
     }
 
+//        Employee employee = new Employee();
+//        employee.setCustomerID(id);
+//        employee.setCustomer(customer);
+//        employee.setCustomer((Customer) cdao.getCustomerMap());
+//
+//        return new ModelAndView("employeeform", "command", employee);
+//    }
+    /**
+     *
+     * @param employee
+     * @param result
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/employee/editemployee/{id}")
     public ModelAndView edit(@PathVariable int id) {
         Employee employee = edao.getEmployeeById(id);
-
-        employee.setCustomers(edao.getCustomerMap());
-
-        return new ModelAndView("employeeeditform", "command", employee);
+//        employee.setCustomers(edao.getCustomerMap());
+        return new ModelAndView("employeeeditform", "employee", employee);
     }
 
+    /**
+     *
+     * @param employee
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/employee/editsave", method = RequestMethod.POST)
-    public ModelAndView editsave(@ModelAttribute("employee") Employee employee, HttpServletRequest request) {
+    public ModelAndView editsave(@ModelAttribute("employee") @Valid Employee employee, BindingResult result, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            return new ModelAndView("employeeeditform", "employee", employee);
+        }
+
         int r = edao.update(employee);
 
         Message msg = null;
@@ -155,6 +189,12 @@ public class EmployeeController {
         return new ModelAndView("redirect:/employee/viewemployee");
     }
 
+    /**
+     *
+     * @param id
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/employee/deleteemployee/{id}", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable int id, HttpServletRequest request) {
         int r = edao.delete(id);
@@ -171,15 +211,27 @@ public class EmployeeController {
         return new ModelAndView("redirect:/employee/viewemployee");
     }
 
+    /**
+     *
+     * @param webDataBinder
+     */
     @InitBinder("employee")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(employeeValidator);
     }
 
+    /**
+     *
+     * @return
+     */
     public EmployeeValidator getEmployeeValidator() {
-        return (EmployeeValidator) employeeValidator;
+        return employeeValidator;
     }
 
+    /**
+     *
+     * @param employeeValidator
+     */
     public void setEmployeeValidator(EmployeeValidator employeeValidator) {
         this.employeeValidator = employeeValidator;
     }
