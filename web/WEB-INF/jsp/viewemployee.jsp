@@ -10,7 +10,7 @@
 <%@ include file="theme/header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Manage Employees</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Manage Employee</b></h5>
 </header>
 
 <div class="w3-row-padding w3-margin-bottom">
@@ -35,9 +35,9 @@
             <th>Action</th>
         </tr>  
 
-        <c:forEach var="Employee" items="${list}">   
+        <c:forEach var="employee" items="${list}">   
             <tr>
-                <td>${employee.iEmployeeID}</td>
+                <td>${employee.employeeID}</td>
                 <td>${employee.employeeLastName}</td>
                 <td>${employee.employeeFirstName}</td>
                 <td>

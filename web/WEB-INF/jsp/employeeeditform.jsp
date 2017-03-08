@@ -21,11 +21,11 @@
         </div>
 
         <form:form method="POST" action="/arwcrm/employee/editsave" cssClass="w3-container" commandName="employee">
-            <form:hidden path="id"  />
+            <form:hidden path="employeeID"  />
 
             <div class="w3-padding-8">
-                <form:input path="id" cssClass="w3-input w3-border" placeholder="Employee ID" />
-                <form:errors path="id" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="employeeID" cssClass="w3-input w3-border" placeholder="Employee ID" />
+                <form:errors path="employeeID" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="employeeLastName" cssClass="w3-input w3-border" placeholder="Employee Last Name" />
                 <form:errors path="employeeLastName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />                              
                 <form:input path="employeeFirstName" cssClass="w3-input w3-border" placeholder="Employee First Name" />
@@ -38,8 +38,8 @@
                 <form:errors path="extension" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="email" cssClass="w3-input w3-border" placeholder="Email" />
                 <form:errors path="email" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="departmentNumber" cssClass="w3-input w3-border" placeholder="Department Number" />
-                <form:errors path="departmentNumber" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="deptNumber" cssClass="w3-input w3-border" placeholder="Department Number" />
+                <form:errors path="deptNumber" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="title" cssClass="w3-input w3-border" placeholder="Title" />
                 <form:errors path="title" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="startDate" cssClass="w3-input w3-border" placeholder="Start Date"/>

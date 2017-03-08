@@ -42,6 +42,8 @@ public class CustomerController {
      */
     @RequestMapping("/customer/customerform")
     public ModelAndView showform() {
+//        Customer customer = new Customer();
+//        customer.setCustomer((Customer) cdao.getCustomerMap());
         return new ModelAndView("customerform", "customer", new Customer());
     }
 

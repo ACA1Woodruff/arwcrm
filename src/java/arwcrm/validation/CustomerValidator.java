@@ -35,9 +35,9 @@ public class CustomerValidator implements Validator {
             errors.rejectValue("customerName", "customer.name.length");
         }
 
-        if (!customer.getCustomerName().matches("^[A-Za-z0-9]*$")) {
-            errors.rejectValue("customerName", "customer.name.pattern");
-        }
+//        if (!customer.getCustomerName().matches("^[A-Za-z0-9]*$")) {
+//            errors.rejectValue("customerName", "customer.name.pattern");
+//        }
 
        
         }

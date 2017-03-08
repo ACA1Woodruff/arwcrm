@@ -30,12 +30,16 @@
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
         <tr>
             <th>InvoiceID</th>
+            <th>PurchaseOrder</th>
+            <th>CustomerID</th>
             <th>Action</th>
         </tr>  
 
         <c:forEach var="invoice" items="${list}">   
             <tr>  
                 <td>${invoice.invoiceID}</td>
+                <td>${invoice.PurchaseOrder}</td>
+                <td>${invoice.CustomerID}</td>
 
                 <td>
                     <a href="<c:url value="/invoice/editinvoice/${invoice.invoiceID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>

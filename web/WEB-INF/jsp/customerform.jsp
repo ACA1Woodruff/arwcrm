@@ -18,6 +18,8 @@
             <div class="w3-padding-8">
                 <!--<label><b>Name</b></label>-->
 
+                <!--<form:input path="CustomerID" cssClass="w3-input w3-border" placeholder="CustomerID" />
+                <form:errors path="CustomerID" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />-->
                 <form:input path="customerName" cssClass="w3-input w3-border" placeholder="Customer Name" />
                 <form:errors path="customerName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="customerContactLastName" cssClass="w3-input w3-border" placeholder="Contact Last Name" />
@@ -44,8 +46,8 @@
 
                 <form:input path="postalCode" cssClass="w3-input w3-border" placeholder="Postal Code" />
                 <form:errors path="postalCode" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <!--<form:input path="country" cssClass="w3-input w3-border" placeholder="Country" />
-                <form:errors path="country" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />-->
+                <form:input path="country" cssClass="w3-input w3-border" placeholder="Country" />
+                <form:errors path="country" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="creditLimit" cssClass="w3-input w3-border" placeholder="Credit Limit" />
                 <form:errors path="creditLimit" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />              
             </div>
@@ -71,6 +73,7 @@
                     </div>
                 </c:otherwise>
             </c:choose>
+            
             <div class="w3-padding-8">
                 <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
             </div>

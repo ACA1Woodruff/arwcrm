@@ -23,7 +23,7 @@
     </bean>
   
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="/WEB-INF/messages" />
+        <property name="basename" value="/WEB-INF/message" />
     </bean>
   
     <mvc:resources mapping="/media/**" location="/media/" cache-period="10000" />
@@ -45,15 +45,15 @@
     <bean id="invoice-dao" class="arwcrm.repository.InvoiceDAO">  
         <property name="template" ref="jt"></property>  
     </bean>
-    
-    <bean id="jobCategory-dao" class="arwcrm.repository.JobCategoryDAO">  
+  
+    <bean id="jobCategory-jcdao" class="arwcrm.repository.JobCategoryDAO">  
         <property name="template" ref="jt"></property>  
     </bean>
     
-    <bean id="jobProfiles-dao" class="arwcrm.repository.JobProfilesDAO">  
+    <bean id="jobProfiles-jpdao" class="arwcrm.repository.JobProfilesDAO">  
         <property name="template" ref="jt"></property>    
     </bean>
-    
+  
     <bean id="user-dao" class="arwcrm.repository.UserDAO">  
         <property name="template" ref="jt"></property>
     </bean>

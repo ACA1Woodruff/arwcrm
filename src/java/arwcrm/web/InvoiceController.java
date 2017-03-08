@@ -19,9 +19,14 @@ import arwcrm.repository.EmployeeDAO;
 import arwcrm.repository.InvoiceDAO;
 import arwcrm.repository.JobCategoryDAO;
 import arwcrm.repository.JobProfilesDAO;
+import arwcrm.validation.CustomerValidator;
 import java.util.HashMap;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 
 /**
  *
@@ -45,14 +50,16 @@ public class InvoiceController {
     @Autowired
     JobProfilesDAO jpdao = new JobProfilesDAO();
 
+//    @Autowired
+//    private InvoiceValidator invoiceValidator;
     private static final Logger logger = Logger.getLogger(InvoiceController.class.getName());
 
     @RequestMapping("/invoice/invoiceform")
     public ModelAndView showform() {
-        Invoice invoice = new Invoice();
-        invoice.setCustomer((Customer) idao.getCustomersMap());
+//        Invoice invoice = new Invoice();
+//        invoice.setCustomer((Customer) idao.getCustomerMap());
 
-        return new ModelAndView("invoiceform", "command", invoice);
+        return new ModelAndView("invoiceform", "invoice", new Invoice());
     }
 
     @RequestMapping("/invoice/invoiceform/{id}")
@@ -100,7 +107,7 @@ public class InvoiceController {
             start = (pageid - 1) * total + 1;
         }
 
-        List<Invoice> list = idao.getInvoicesByPage(start, total);
+        List<Invoice> list = idao.getInvoiceByPage(start, total);
 
         HashMap<String, Object> context = new HashMap<String, Object>();
         context.put("list", list);
@@ -123,8 +130,8 @@ public class InvoiceController {
     @RequestMapping(value = "/invoice/editinvoice/{id}")
     public ModelAndView edit(@PathVariable int id) {
         Invoice invoice = idao.getInvoiceById(id);
-        invoice.setCustomer((Customer) idao.getCustomersMap());
-        return new ModelAndView("invoiceeditform", "command", invoice);
+        invoice.setCustomer((Customer) idao.getCustomerMap());
+        return new ModelAndView("invoiceeditform", "invoice", invoice);
     }
 
     @RequestMapping(value = "/invoice/editsave", method = RequestMethod.POST)

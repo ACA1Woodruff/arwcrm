@@ -24,8 +24,7 @@
             <div class="w3-padding-8">
                 <!--<label><b>Title</b></label>-->
 
-                <form:input path="id" cssClass="w3-input w3-border" placeholder="Employee ID" />
-                <form:errors path="id" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                
                 <form:input path="employeeLastName" cssClass="w3-input w3-border" placeholder="Employee Last Name" />
                 <form:errors path="employeeLastName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />                              
                 <form:input path="employeeFirstName" cssClass="w3-input w3-border" placeholder="Employee First Name" />
@@ -38,18 +37,29 @@
                 <form:errors path="extension" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="email" cssClass="w3-input w3-border" placeholder="Email" />
                 <form:errors path="email" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="departmentNumber" cssClass="w3-input w3-border" placeholder="Department Number" />
-                <form:errors path="departmentNumber" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:input path="deptNumber" cssClass="w3-input w3-border" placeholder="Department Number" />
+                <form:errors path="deptNumber" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="title" cssClass="w3-input w3-border" placeholder="Title" />
                 <form:errors path="title" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                <link rel="stylesheet" href="/resources/demos/style.css">
+                <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                <script>
+                    $(function () {
+                        $("#startDate").datepicker();
+                    });
+                </script>
+                
+                
                 <form:input path="startDate" cssClass="w3-input w3-border" placeholder="Start Date"/>
                 <form:errors path="startDate" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
             </div>
 
             <!--<div class="w3-padding-8">
                 <label><b>File Number</b></label>
-            <form:input path="file_number" cssClass="w3-input w3-border" placeholder="File Number" />
-            <form:errors path="file_number" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+            
         </div>
         <div class="w3-padding-8">
             <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
@@ -78,7 +88,7 @@
                 <c:otherwise>
                     <div class="w3-padding-8">
                         <label><b>Employee</b></label>
-                        <form:select path="employeeid" cssClass="w3-select w3-border">
+                        <form:select path="EmployeeID" cssClass="w3-select w3-border">
                             <form:option value="-1">Select Employee</form:option>
                             <form:options items="${command.employees}"/>
                         </form:select>

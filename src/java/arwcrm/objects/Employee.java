@@ -1,6 +1,7 @@
 package arwcrm.objects;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -19,7 +20,7 @@ public class Employee implements Serializable {
     private String email;
     private String deptNumber;
     private String title;
-    private String startDate;
+    private Date startDate;
     private Customer customer;
     private Map<Integer, String> customers;
 
@@ -235,7 +236,7 @@ public class Employee implements Serializable {
      *
      * @return
      */
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
@@ -243,7 +244,7 @@ public class Employee implements Serializable {
      *
      * @param start date
      */
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 

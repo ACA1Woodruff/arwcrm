@@ -91,8 +91,9 @@ public class EmployeeDAO {
                 a.setHomePhone(rs.getString("homePhone"));
                 a.setExtension(rs.getString("extension"));
                 a.setEmail(rs.getString("email"));
+                a.setDeptNumber(rs.getString("departmentNumber"));
                 a.setTitle(rs.getString("title"));
-                a.setStartDate(rs.getString("startDate"));
+                a.setStartDate(rs.getDate("startDate"));
                 return a;
             }
         });
@@ -133,7 +134,7 @@ public class EmployeeDAO {
                 c.setEmail(rs.getString(7));
                 c.setDeptNumber(rs.getString(8));
                 c.setTitle(rs.getString(9));
-                c.setStartDate(rs.getString(10));
+                c.setStartDate(rs.getDate(10));
 
                 Customer customer = new Customer();
                 customer.setCustomerID(rs.getInt(1));
