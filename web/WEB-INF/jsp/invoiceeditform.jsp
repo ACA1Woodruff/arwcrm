@@ -24,12 +24,12 @@
             <form:hidden path="InvoiceID"  />
 
             <div class="w3-padding-8">
-                <label><b>InvoiceID</b></label>
+                <!--<label><b>InvoiceID</b></label>-->
 
-                <form:input path="invoice" cssClass="w3-input w3-border"  />
+                <!--<form:input path="invoice" cssClass="w3-input w3-border"  />
                 <form:errors path="invoice" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />              
                 <form:input path="InvoiceID" cssClass="w3-input w3-border" placeholder="InvoiceID"  />
-                <form:errors path="InvoiceID" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <form:errors path="InvoiceID" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />-->
                 <form:input path="PurchaseOrder" cssClass="w3-input w3-border" placeholder="Purchase Order" />
                 <form:errors path="PurchaseOrder" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />                               
                 <form:input path="customerId" cssClass="w3-input w3-border" placeholder="CustomerID"  />
@@ -72,7 +72,6 @@
                 <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
             </div>
         </form:form>
-
     </div>
 </div>
 

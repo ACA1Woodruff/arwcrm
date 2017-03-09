@@ -49,7 +49,7 @@
 
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <div class="w3-dropdown-hover">
-                    <a href="<c:url value="/customer/viewcustomer" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Customers  <i class="fa fa-caret-down"></i></a>
+                    <a href="<c:url value="/customer/viewcustomer" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Customer  <i class="fa fa-caret-down"></i></a>
                     <div class="w3-dropdown-content w3-white w3-card-4">
                         <a class="w3-padding w3-dark-grey" href="<c:url value="/customer/customerform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Customer</a>
                     </div>
