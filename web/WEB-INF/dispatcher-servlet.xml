@@ -46,6 +46,9 @@
         <property name="template" ref="jt"></property>  
     </bean>
   
+  <bean id="interactions-dao" class="arwcrm.repository.InteractionsDAO">  
+        <property name="template" ref="jt"></property>  
+    </bean>
     <bean id="jobCategory-jcdao" class="arwcrm.repository.JobCategoryDAO">  
         <property name="template" ref="jt"></property>  
     </bean>

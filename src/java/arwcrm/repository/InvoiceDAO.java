@@ -41,7 +41,7 @@ public class InvoiceDAO {
      * @return
      */
     public int save(Invoice invoice) {
-        String sql = "INSERT INTO INVOICE (`invoiceId`,`PurchaseOrder`,`CustomerID`,`InvoiceDate`,`BillingAddress`,`BillingCity`,`BillingState`,`BillingCountry`,`BillingPostalCode`,`BillingPhone`,`Fax`,`Total`) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO INVOICE (`InvoiceId`,`PurchaseOrder`,`CustomerID`,`InvoiceDate`,`BillingAddress`,`BillingCity`,`BillingState`,`BillingCountry`,`BillingPostalCode`,`BillingPhone`,`Fax`,`Total`) values(?,?,?,?,?,?,?,?,?,?,?,?)";
         Object[] values = {invoice.getInvoiceID(), invoice.getPurchaseOrder(), invoice.getCustomerId(), invoice.getInvoiceDate(), invoice.getBillingAddress(), invoice.getBillingCity(), invoice.getBillingState(), invoice.getBillingCountry(), invoice.getBillingPostalCode(), invoice.getBillingPhone(), invoice.getFax(), invoice.getTotal()};
         return template.update(sql, values);
     }
@@ -52,7 +52,7 @@ public class InvoiceDAO {
      * @return
      */
     public int update(Invoice invoice) {
-        String sql = "UPDATE Invoice SET `invoiceId` = ?,`PurchaseOrder` = ?,`CustomerID` = ?,`InvoiceDate` = ?,`BillingAddress` = ?,`BillingCity` = ?,`BillingState` = ?,`BillingCountry` = ?,`BillingPostalCode` = ?,`BillingPhone` = ?,`Fax` = ?,`Total` = ?"
+        String sql = "UPDATE Invoice SET `InvoiceId` = ?,`PurchaseOrder` = ?,`CustomerID` = ?,`InvoiceDate` = ?,`BillingAddress` = ?,`BillingCity` = ?,`BillingState` = ?,`BillingCountry` = ?,`BillingPostalCode` = ?,`BillingPhone` = ?,`Fax` = ?,`Total` = ?"
                 + " WHERE InvoiceID = ?";
         Object[] values = {invoice.getInvoiceID(), invoice.getPurchaseOrder(), invoice.getCustomerId(), invoice.getInvoiceDate(), invoice.getBillingAddress(), invoice.getBillingCity(), invoice.getBillingState(), invoice.getBillingCountry(), invoice.getBillingPostalCode(), invoice.getBillingPhone(), invoice.getFax(), invoice.getTotal()};
         return template.update(sql, values);
@@ -77,18 +77,18 @@ public class InvoiceDAO {
         return template.query("SELECT * FROM Invoice", new RowMapper<Invoice>() {
             public Invoice mapRow(ResultSet rs, int row) throws SQLException {
                 Invoice a = new Invoice();
-                a.setInvoiceID(rs.getInt("InvoiceID"));
-                a.setPurchaseOrder(rs.getString("PurchaseOrder"));
-                a.setCustomerId(rs.getInt("CustomerID"));
-                a.setInvoiceDate(rs.getString("Invoice Date"));
-                a.setBillingAddress(rs.getString("Billing Address"));
-                a.setBillingCity(rs.getString("Billing City"));
-                a.setBillingState(rs.getString("Billing State"));
-                a.setBillingCountry(rs.getString("Billing Country"));
-                a.setBillingPostalCode(rs.getString("BillingPostalCode"));
-                a.setBillingPhone(rs.getString("BillingPhone"));
-                a.setFax(rs.getString("Fax"));
-                a.setTotal(rs.getString("Total"));
+                a.setInvoiceID(rs.getInt(1));
+                a.setPurchaseOrder(rs.getString(2));
+                a.setCustomerId(rs.getInt(3));
+                a.setInvoiceDate(rs.getString(4));
+                a.setBillingAddress(rs.getString(5));
+                a.setBillingCity(rs.getString(6));
+                a.setBillingState(rs.getString(7));
+                a.setBillingCountry(rs.getString(8));
+                a.setBillingPostalCode(rs.getString(9));
+                a.setBillingPhone(rs.getString(10));
+                a.setFax(rs.getString(11));
+                a.setTotal(rs.getString(12));
                 return a;
             }
         });
