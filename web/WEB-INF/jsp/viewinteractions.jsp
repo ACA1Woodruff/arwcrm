@@ -1,6 +1,6 @@
 <%-- 
-    Document   : viewinteractions
-    Created on : Mar 8, 2017, 3:38:50 PM
+    Document   : viewinteractions1
+    Created on : Mar 9, 2017, 10:47:07 AM
     Author     : awood
 --%>
 
@@ -29,22 +29,24 @@
 
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
         <tr>
-            <th>InvoiceID</th>
-            <th>PurchaseOrder</th>
-            <th>CustomerID</th>
+            <th>Interaction Id</th>
+            <th>Customer Id</th>
+            <th>Contact Date</th>
+            <th>Contact Person</th>
+            <th>Contact Type</th>
             <th>Action</th>
         </tr>  
 
-        <c:forEach var="invoice" items="${list}">   
-            <tr>  
-                <td>${invoice.invoiceID}</td>
-                <td>${invoice.PurchaseOrder}</td>
-                <td>${invoice.CustomerID}</td>
-
+        <c:forEach var="interactions" items="${list}">   
+            <tr> 
+                <td>${interactions.interactionId}</td>
+                <td>${interactions.customerId}</td>
+                <td>${interactions.occurredOn}</td>
+                <td>${interactions.contactPerson}</td>
+                <td>${interactions.contactType}</td>
                 <td>
-                    <a href="<c:url value="/invoice/editinvoice/${invoice.invoiceID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/invoice/deleteinvoice/${invoice.invoiceID}" />"><button class="w3-btn w3-round w3-red">Delete</button>onclick="return confirm('Are you sure you want to delete this user/customer/interaction?');"</a>
-                    <a href="<c:url value="/customer/customerform/${invoice.invoiceID}" />"><button class="w3-btn w3-round w3-green">Add Customer</button></a>
+                    <a href="<c:url value="/interactions/editinteractions/${interactions.interactionId}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
+                    <a href="<c:url value="/interactions/deleteinteractions/${interactions.interactionId}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this Interaction?');">Delete</button></a>
                 </td>  
             </tr>  
         </c:forEach>  
@@ -53,7 +55,7 @@
     <div class="w3-padding-8">
         <ul class="w3-pagination">
             <c:forEach begin="1" end="${pages}" varStatus="p">  
-                <li><a class="<c:if test="${p.index eq page}">w3-green</c:if>" href="<c:url value="/invoice/viewinvoice/${p.index}" />">${p.index}</a></li>
+                <li><a class="<c:if test="${p.index eq page}">w3-green</c:if>" href="<c:url value="/interactions/viewinteractions/${p.index}" />">${p.index}</a></li>
                 </c:forEach>
         </ul>
     </div>

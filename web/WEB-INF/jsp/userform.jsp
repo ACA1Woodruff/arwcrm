@@ -23,14 +23,20 @@
         <form:form method="post" action="/arwcrm/user/save" cssClass="w3-container" commandName="user">
             <div class="w3-padding-8">
                 <label><b>Username</b></label>
-                <form:input path="Username" cssClass="w3-input w3-border"  />
+                <form:input path="Username" cssClass="w3-input w3-border" placeholder="User Name" />
                 <form:errors path="Username" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
             </div>
 
             <div class="w3-padding-8">
                 <label><b>Password</b></label>
-                <form:password path="Password" cssClass="w3-input w3-border"  />
+                <form:password path="Password" cssClass="w3-input w3-border" placeholder="Password"/>
                 <form:errors path="Password" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+            </div>
+
+            <div class="w3-padding-8">
+                <label><b>Name</b></label>
+                <form:input path="Name" cssClass="w3-input w3-border" placeholder="Name" />
+                <form:errors path="Name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
             </div>
 
             <div class="w3-padding-8">

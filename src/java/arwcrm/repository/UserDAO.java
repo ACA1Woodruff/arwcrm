@@ -28,9 +28,9 @@ public class UserDAO {
     }
 
     public int save(User user) {
-        String sql = "INSERT INTO users (username, password) values(?, md5(?))";
+        String sql = "INSERT INTO users (username, password, name) values(?, md5(?), ?)";
 
-        Object[] values = {user.getUsername(), user.getPassword()};
+        Object[] values = {user.getUsername(), user.getPassword(), user.getName()};
 
         logger.info("User DAO save values: " + values);
 
@@ -51,84 +51,84 @@ public class UserDAO {
         // but the user is what is important.
         return r;
     }
-//    private Object Username;
-//
-//    /**
-//     *
-//     * @param template
-//     */
+    private Object Username;
+
+    /**
+     *
+     * @param template
+     */
 //    public void setTemplate(JdbcTemplate template) {
 //        this.template = template;
 //    }
-//
-//    /**
-//     *
-//     * @param users
-//     * @return
-//     */
-//    public int save(User users) {
+
+    /**
+     *
+     * @param users
+     * @return
+     */
+//    public int save(User user) {
 //        String sql = "INSERT INTO Users (Username, Password, Roles) values(?,?,?)";
-//        Object[] values = {users.getUsername(), users.getPassword(), users.getRoles()};
+//        Object[] values = {user.getUsername(), user.getPassword(), user.getRoles()};
 //        return template.update(sql, values);
 //    }
-//
-//    public int update(User users) {
-//        String sql = "UPDATE Users SET UsersUsername = ?,UsersPassword = ?,UsersRoles = ? WHERE UsersUsername = ?";
-//        Object[] values = {users.getUsername(), users.getPassword(), users.getRoles()};
-//        return template.update(sql, values);
-//    }
-//
-//    public int delete(String Username) {
-//        String sql = "DELETE FROM Users WHERE UsersUsername = ?";
-//        Object[] values = {Username};
-//        return template.update(sql, values);
-//    }
-//
-//    public List<User> getUsersList() {
-//        return template.query("SELECT * FROM Users", new RowMapper<User>() {
-//            public User mapRow(ResultSet rs, int row) throws SQLException {
-//                User a = new User();
-//                a.setUsername(rs.getString("UsersUsername"));
-//                a.setPassword(rs.getString("UsersPassword"));
-//                a.setRoles(rs.getString("Roles"));
-//                return a;
-//            }
-//        });
-//    }
-//
-//    /**
-//     *
-//     * @param id
-//     * @return
-//     */
-//    public User getUsersById(String Username) {
-//        String sql = "SELECT * FROM Users WHERE Username = ?";
-//        return template.queryForObject(sql, new Object[]{Username}, new BeanPropertyRowMapper<User>(User.class));
-//    }
-//
-//    public List<User> getUsersByPage(int start, int total) {
-//        String sql = "SELECT * FROM Users LIMIT " + (start - 1) + "," + total;
-//        return template.query(sql, new RowMapper<User>() {
-//            public User mapRow(ResultSet rs, int row) throws SQLException {
-//                User c = new User();
-//                c.setUsername(rs.getString(1));
-//                c.setPassword(rs.getString(2));
-//                c.setRoles(rs.getString(3));
-//                return c;
-//
-//            }
-//
-//        });
-//
-//    }
-//
-//    public int getUsersCount() {
-//        String sql = "SELECT COUNT(Users_username) AS rowcount FROM Users";
-//        SqlRowSet rs = template.queryForRowSet(sql);
-//        if (rs.next()) {
-//            return rs.getInt("rowcount");
-//        }
-//
-//        return 1;
-//    }
+
+    public int update(User user) {
+        String sql = "UPDATE Users SET Users Username = ?,UsersPassword = ?,UsersRoles = ? WHERE UsersUsername = ?";
+        Object[] values = {user.getUsername(), user.getPassword(), user.getRoles()};
+        return template.update(sql, values);
+    }
+
+    public int delete(String Username) {
+        String sql = "DELETE FROM User WHERE User Username = ?";
+        Object[] values = {Username};
+        return template.update(sql, values);
+    }
+
+    public List<User> getUsersList() {
+        return template.query("SELECT * FROM Users", new RowMapper<User>() {
+            public User mapRow(ResultSet rs, int row) throws SQLException {
+                User a = new User();
+                a.setUsername(rs.getString(1));
+                a.setPassword(rs.getString(2));
+                a.setName(rs.getString(3));
+                return a;
+            }
+        });
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public User getUsersById(String Username) {
+        String sql = "SELECT * FROM User WHERE Username = ?";
+        return template.queryForObject(sql, new Object[]{Username}, new BeanPropertyRowMapper<User>(User.class));
+    }
+
+    public List<User> getUsersByPage(int start, int total) {
+        String sql = "SELECT * FROM Users LIMIT " + (start - 1) + "," + total;
+        return template.query(sql, new RowMapper<User>() {
+            public User mapRow(ResultSet rs, int row) throws SQLException {
+                User c = new User();
+                c.setUsername(rs.getString(1));
+                c.setPassword(rs.getString(2));
+                c.setName(rs.getString(3));
+                return c;
+
+            }
+
+        });
+
+    }
+
+    public int getUsersCount() {
+        String sql = "SELECT COUNT(User username) AS rowcount FROM Users";
+        SqlRowSet rs = template.queryForRowSet(sql);
+        if (rs.next()) {
+            return rs.getInt("rowcount");
+        }
+
+        return 1;
+    }
 }

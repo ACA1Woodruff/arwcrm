@@ -13,7 +13,8 @@ public class User implements Serializable {
 
     private String Username;
     private String Password;
-//    private String Enabled;
+    private String Name;
+    private String Enabled;
     private List<String> roles;
     private Map<String, String> rolemap;
 
@@ -51,14 +52,14 @@ public class User implements Serializable {
         this.roles = roles;
     }
 
-//    public String getEnabled() {
-//        return Enabled;
-//    }
-//
-//    public void setEnabled(String Enabled) {
-//        this.Enabled = Enabled;
-//    }
-//
+    public String getEnabled() {
+        return Enabled;
+    }
+
+    public void setEnabled(String Enabled) {
+        this.Enabled = Enabled;
+    }
+
 //    public String toString() {
 //        StringBuffer buffer = new StringBuffer();
 //        buffer.append("Username: " + this.Username + ";");
@@ -67,4 +68,11 @@ public class User implements Serializable {
 //        return buffer.toString();
 //
 //    }
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
 }

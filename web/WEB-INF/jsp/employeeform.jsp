@@ -24,7 +24,7 @@
             <div class="w3-padding-8">
                 <!--<label><b>Title</b></label>-->
 
-                
+
                 <form:input path="employeeLastName" cssClass="w3-input w3-border" placeholder="Employee Last Name" />
                 <form:errors path="employeeLastName" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />                              
                 <form:input path="employeeFirstName" cssClass="w3-input w3-border" placeholder="Employee First Name" />
@@ -41,7 +41,7 @@
                 <form:errors path="deptNumber" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="title" cssClass="w3-input w3-border" placeholder="Title" />
                 <form:errors path="title" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                
+
                 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
                 <link rel="stylesheet" href="/resources/demos/style.css">
                 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -51,8 +51,8 @@
                         $("#startDate").datepicker();
                     });
                 </script>
-                
-                
+
+
                 <form:input path="startDate" cssClass="w3-input w3-border" placeholder="Start Date"/>
                 <form:errors path="startDate" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
             </div>
@@ -65,42 +65,42 @@
             <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
         </div>-->
 
+        </div>
+
     </div>
+
+    <%@ include file="theme/footer.jsp" %>
 
 </div>
 
-            <%@ include file="theme/footer.jsp" %>
-        
-        </div>
-
-            <c:choose>
-                <c:when test="${not empty command.employee}">
-                    <form:hidden path="EmployeeID" />
-                    <div class="w3-padding-8">
-                        <label><b>Employee</b></label>
-                        <div class="w3-panel w3-border">
-                            <p><b>${command.employee.last_name}</b></p>
-                            <p><b>${command.employee.first_name}</b></p>
-                        </div>
-                    </div>
-                </c:when>
-
-                <c:otherwise>
-                    <div class="w3-padding-8">
-                        <label><b>Employee</b></label>
-                        <form:select path="EmployeeID" cssClass="w3-select w3-border">
-                            <form:option value="-1">Select Employee</form:option>
-                            <form:options items="${command.employees}"/>
-                        </form:select>
-                    </div>
-                </c:otherwise>
-            </c:choose>
-
-            <div class="w3-padding-8">
-                <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
+<c:choose>
+    <c:when test="${not empty command.employee}">
+        <form:hidden path="EmployeeID" />
+        <div class="w3-padding-8">
+            <label><b>Employee</b></label>
+            <div class="w3-panel w3-border">
+                <p><b>${command.employee.last_name}</b></p>
+                <p><b>${command.employee.first_name}</b></p>
             </div>
-        </form:form>
-    </div>
+        </div>
+    </c:when>
+
+    <c:otherwise>
+        <div class="w3-padding-8">
+            <label><b>Employee</b></label>
+            <form:select path="EmployeeID" cssClass="w3-select w3-border">
+                <form:option value="-1">Select Employee</form:option>
+                <form:options items="${command.employees}"/>
+            </form:select>
+        </div>
+    </c:otherwise>
+</c:choose>
+
+<div class="w3-padding-8">
+    <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
+</div>
+</form:form>
+</div>
 
 </div>
 

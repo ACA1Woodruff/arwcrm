@@ -20,7 +20,7 @@
             <h2>Interactions Information</h2>
         </div>
 
-        <form:form method="post" action="save" cssClass="w3-container" commandName="interaction">
+        <form:form method="post" action="save" cssClass="w3-container" commandName="interactions">
             <div class="w3-padding-8">
                 <label><b>InteractionsID</b></label>
 
@@ -42,16 +42,15 @@
 
                 <form:input path="status" cssClass="w3-input w3-border" placeholder="Status"  />
                 <form:errors path="status" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="method_of_contact" cssClass="w3-input w3-border" placeholder="Method of Conduct"  />
+                <form:input path="method_of_contact" cssClass="w3-input w3-border" placeholder="Method of Contact"  />
                 <form:errors path="method_of_contact" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="email" cssClass="w3-input w3-border" placeholder="Email"  />
                 <form:errors path="email" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="phone" cssClass="w3-input w3-border" cssStyle="w3-select w3-border" placeholder="Phone" />                    
                 <form:errors path="phone" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="notes" cssClass="w3-input w3-border" placeholder="Notes"  />
+                <form:textarea path="notes" cssClass="w3-input w3-border" cssStyle="height: 100px" placeholder="Notes"  />
                 <form:errors path="notes" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="contact_type" cssClass="w3-input w3-border" placeholder="Contact Type"  />
-                <form:errors path="contact_type" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+
 
                 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
                 <link rel="stylesheet" href="/resources/demos/style.css">
@@ -65,8 +64,8 @@
 
                 <form:input path="contact_date" cssClass="w3-input w3-border" placeholder="Contact Date"  />
                 <form:errors path="contact_date" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="CustomerID" cssClass="w3-input w3-border" placeholder="CustomerID"  />
-                <form:errors path="CustomerID" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <!--<form:input path="CustomerID" cssClass="w3-input w3-border" placeholder="CustomerID"  />
+                <form:errors path="CustomerID" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />-->
             </div>
 
             <div class="w3-padding-8">

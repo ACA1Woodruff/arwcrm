@@ -54,21 +54,29 @@
                         <a class="w3-padding w3-dark-grey" href="<c:url value="/customer/customerform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Customer</a>
                     </div>
                 </div>
-            
+
                 <div class="w3-dropdown-hover">
                     <a href="<c:url value="/employee/viewemployee" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Employee  <i class="fa fa-caret-down"></i></a>
                     <div class="w3-dropdown-content w3-white w3-card-4">
                         <a class="w3-padding w3-dark-grey" href="<c:url value="/employee/employeeform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Employee</a>
                     </div>
                 </div>
-            
+
                 <div class="w3-dropdown-hover">
                     <a href="<c:url value="/invoice/viewinvoice" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Invoice  <i class="fa fa-caret-down"></i></a>
                     <div class="w3-dropdown-content w3-white w3-card-4">
                         <a class="w3-padding w3-dark-grey" href="<c:url value="/invoice/invoiceform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Invoice</a>
                     </div>
                 </div>
-            
+
+                <div class="w3-dropdown-hover">
+                    <a href="<c:url value="/interactions/viewinteractions" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Interactions  <i class="fa fa-caret-down"></i></a>
+                    <div class="w3-dropdown-content w3-white w3-card-4">
+                        <a class="w3-padding w3-dark-grey" href="<c:url value="/interactions/interactionsform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Interactions</a>
+                    </div>
+                </div>    
+
+
                 <div class="w3-dropdown-hover">
                     <a href="<c:url value="/user/viewuser" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Users  <i class="fa fa-caret-down"></i></a>
                     <div class="w3-dropdown-content w3-white w3-card-4">

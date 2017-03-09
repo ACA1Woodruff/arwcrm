@@ -29,22 +29,22 @@
 
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
         <tr>
-            <th>InteractionsID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>InvoiceID</th>
+            <th>PurchaseOrder</th>
+            <th>CustomerID</th>
             <th>Action</th>
         </tr>  
 
-        <c:forEach var="interactions" items="${list}">   
+        <c:forEach var="invoice" items="${list}">   
             <tr>  
-                <td>${interactions.interactionsID}</td>
-                <td>${interactions.FirstName}</td>
-                <td>${interactions.LastName}</td>
+                <td>${invoice.invoiceID}</td>
+                <td>${invoice.PurchaseOrder}</td>
+                <td>${invoice.CustomerID}</td>
 
                 <td>
-                    <a href="<c:url value="/interactions/editinteractions/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/interactions/deleteinteractions/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-red">Delete</button>onclick="return confirm('Are you sure you want to delete this user/customer/interaction?');"</a>
-                    <a href="<c:url value="/customer/customerform/${interactions.interactionsID}" />"><button class="w3-btn w3-round w3-green">Add Customer</button></a>
+                    <a href="<c:url value="/invoice/editinvoice/${invoice.invoiceID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
+                    <a href="<c:url value="/invoice/deleteinvoice/${invoice.invoiceID}" />"><button class="w3-btn w3-round w3-red">Delete</button>onclick="return confirm('Are you sure you want to delete this user/client/interaction?');"</a>
+                    <a href="<c:url value="/customer/customerform/${invoice.invoiceID}" />"><button class="w3-btn w3-round w3-green">Add Customer</button></a>
                 </td>  
             </tr>  
         </c:forEach>  
@@ -53,7 +53,7 @@
     <div class="w3-padding-8">
         <ul class="w3-pagination">
             <c:forEach begin="1" end="${pages}" varStatus="p">  
-                <li><a class="<c:if test="${p.index eq page}">w3-green</c:if>" href="<c:url value="/interactions/viewinteractions/${p.index}" />">${p.index}</a></li>
+                <li><a class="<c:if test="${p.index eq page}">w3-green</c:if>" href="<c:url value="/invoice/viewinvoice/${p.index}" />">${p.index}</a></li>
                 </c:forEach>
         </ul>
     </div>

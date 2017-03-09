@@ -127,19 +127,19 @@ public class Interactions implements Serializable {
         this.CustomerID = CustomerID;
     }
 
-    public String toString() {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append("ID: " + this.interaction_id + ";");
-        buffer.append("First Name: " + first_name);
-        buffer.append("Last Name: " + last_name);
-        buffer.append("Status: " + status);
-        buffer.append("Method of Contact: " + method_of_contact);
-        buffer.append("Email: " + email);
-        buffer.append("Phone: " + phone);
-        buffer.append("Notes: " + notes);
-        buffer.append("Contact Date: " + contact_date);
-        buffer.append("Customer ID: " + this.CustomerID + ";");
-        return buffer.toString();
-    }
+//    public String toString() {
+//        StringBuffer buffer = new StringBuffer();
+//        buffer.append("ID: " + this.interaction_id + ";");
+//        buffer.append("First Name: " + first_name);
+//        buffer.append("Last Name: " + last_name);
+//        buffer.append("Status: " + status);
+//        buffer.append("Method of Contact: " + method_of_contact);
+//        buffer.append("Email: " + email);
+//        buffer.append("Phone: " + phone);
+//        buffer.append("Notes: " + notes);
+//        buffer.append("Contact Date: " + contact_date);
+//        buffer.append("Customer ID: " + this.CustomerID + ";");
+//        return buffer.toString();
+//    }
 
 }

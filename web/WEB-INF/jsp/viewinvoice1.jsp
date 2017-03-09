@@ -1,6 +1,6 @@
 <%-- 
-    Document   : viewuser
-    Created on : Feb 15, 2017, 7:04:38 PM
+    Document   : viewinvoice1
+    Created on : Mar 9, 2017, 1:44:01 PM
     Author     : awood
 --%>
 
@@ -10,7 +10,7 @@
 <%@ include file="theme/header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Manage Users</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Manage Invoice</b></h5>
 </header>
 
 <div class="w3-row-padding w3-margin-bottom">
@@ -29,32 +29,30 @@
 
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
         <tr>
-            <th>Username</th>
-            <th>Name</th>
-            <th>Enable</th>
+            <th>Purchase Order</th>
+            <th>Invoice Date</th>
+            <th>Employee First Name</th>
             <th>Action</th>
-            <!--<th>Password</th>-->           
         </tr>  
 
-        <c:forEach var="User" items="${list}">   
-            <tr>  
-                <td>${user.username}</td>
-                <td>${user.name}</td>
-                <td>${user.enable}</td>
-
+        <c:forEach var="employee" items="${list}">   
+            <tr>
+                <td>${employee.employeeID}</td>
+                <td>${employee.employeeLastName}</td>
+                <td>${employee.employeeFirstName}</td>
                 <td>
-                    <a href="<c:url value="/user/edituser/${user.id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/user/deleteuser/${user.id}" />"><button class="w3-btn w3-round w3-red">Delete</button>onclick="return confirm('Are you sure you want to delete this user/customer/interaction?');"</a>
-                    <a href="<c:url value="/user/userform/${user.id}" />"><button class="w3-btn w3-round w3-green">Add User</button></a>
+                    <a href="<c:url value="/employee/editemployee/${employee.employeeID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
+                    <a href="<c:url value="/employee/deleteemployee/${employee.employeeID}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this user/client/interaction?');">Delete</button></a>
+                    <a href="<c:url value="/customer/customerform/${employee.employeeID}" />"><button class="w3-btn w3-round w3-green">Add Employee</button></a>
                 </td>  
             </tr>  
-        </c:forEach>
+        </c:forEach>  
     </table> 
 
     <div class="w3-padding-8">
         <ul class="w3-pagination">
             <c:forEach begin="1" end="${pages}" varStatus="p">  
-                <li><a class="<c:if test="${p.index eq page}">w3-green</c:if>" href="<c:url value="/user/viewuser/${p.index}" />">${p.index}</a></li>
+                <li><a class="<c:if test="${p.index eq page}">w3-green</c:if>" href="<c:url value="/employee/viewemployee/${p.index}" />">${p.index}</a></li>
                 </c:forEach>
         </ul>
     </div>
@@ -62,3 +60,4 @@
 </div>
 
 <%@ include file="theme/footer.jsp" %>
+
