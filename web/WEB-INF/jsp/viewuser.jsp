@@ -44,7 +44,7 @@
 
                 <td>
                     <a href="<c:url value="/user/edituser/${user.id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/user/deleteuser/${user.id}" />"><button class="w3-btn w3-round w3-red">Delete</button>onclick="return confirm('Are you sure you want to delete this user/customer/interaction?');"</a>
+                    <a href="<c:url value="/user/deleteuser/${user.id}" />"><button class="w3-btn w3-round w3-red">Delete</button>onclick="return confirm('Are you sure you want to delete this user?');"</a>
                     <a href="<c:url value="/user/userform/${user.id}" />"><button class="w3-btn w3-round w3-green">Add User</button></a>
                 </td>  
             </tr>  

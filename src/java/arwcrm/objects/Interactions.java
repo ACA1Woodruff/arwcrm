@@ -141,5 +141,4 @@ public class Interactions implements Serializable {
 //        buffer.append("Customer ID: " + this.CustomerID + ";");
 //        return buffer.toString();
 //    }
-
 }

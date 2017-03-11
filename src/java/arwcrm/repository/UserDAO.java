@@ -60,7 +60,6 @@ public class UserDAO {
 //    public void setTemplate(JdbcTemplate template) {
 //        this.template = template;
 //    }
-
     /**
      *
      * @param users
@@ -71,7 +70,6 @@ public class UserDAO {
 //        Object[] values = {user.getUsername(), user.getPassword(), user.getRoles()};
 //        return template.update(sql, values);
 //    }
-
     public int update(User user) {
         String sql = "UPDATE Users SET Users Username = ?,UsersPassword = ?,UsersRoles = ? WHERE UsersUsername = ?";
         Object[] values = {user.getUsername(), user.getPassword(), user.getRoles()};

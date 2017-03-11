@@ -54,7 +54,7 @@
 
             <c:choose>
                 <c:when test="${not empty command.employee}">
-                    <form:hidden path="employeeID" />
+                    <form:hidden path="EmployeeID" />
                     <div class="w3-padding-8">
                         <label><b>Employee</b></label>
                         <div class="w3-panel w3-border">
@@ -66,14 +66,14 @@
                 <c:otherwise>
                     <div class="w3-padding-8">
                         <label><b>Employee</b></label>
-                        <form:select path="employeeID" cssClass="w3-select w3-border">
+                        <form:select path="EmployeeID" cssClass="w3-select w3-border">
                             <form:option value="-1">Select Employee</form:option>
                             <form:options items="${command.employees}"  />
                         </form:select>
                     </div>
                 </c:otherwise>
             </c:choose>
-            
+
             <div class="w3-padding-8">
                 <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
             </div>

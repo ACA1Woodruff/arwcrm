@@ -12,7 +12,7 @@ public class Invoice implements Serializable {
 
     private int InvoiceID;
     private String purchaseOrder;
-    private int customerId;
+    private int CustomerId;
     private String invoiceDate;
     private String billingAddress;
     private String billingCity;
@@ -43,11 +43,11 @@ public class Invoice implements Serializable {
     }
 
     public int getCustomerId() {
-        return customerId;
+        return CustomerId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomerId(int CustomerId) {
+        this.CustomerId = CustomerId;
     }
 
     public String getInvoiceDate() {
@@ -274,7 +274,7 @@ public class Invoice implements Serializable {
         StringBuffer buffer = new StringBuffer();
         buffer.append("ID: " + this.InvoiceID + ";");
         buffer.append("PurchaseOrder: " + purchaseOrder);
-        buffer.append("CustomerId: " + customerId);
+        buffer.append("CustomerId: " + CustomerId);
         buffer.append("InvoiceDate: " + invoiceDate);
         buffer.append("BillingAddress: " + billingAddress);
         buffer.append("BillingCity: " + billingCity);

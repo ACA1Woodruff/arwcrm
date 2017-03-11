@@ -42,7 +42,7 @@
                 <td>${employee.employeeFirstName}</td>
                 <td>
                     <a href="<c:url value="/employee/editemployee/${employee.employeeID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/employee/deleteemployee/${employee.employeeID}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this user/client/interaction?');">Delete</button></a>
+                    <a href="<c:url value="/employee/deleteemployee/${employee.employeeID}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this employee?');">Delete</button></a>
                     <a href="<c:url value="/customer/customerform/${employee.employeeID}" />"><button class="w3-btn w3-round w3-green">Add Employee</button></a>
                 </td>  
             </tr>  

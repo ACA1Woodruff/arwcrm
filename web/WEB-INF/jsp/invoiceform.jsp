@@ -23,7 +23,9 @@
         <form:form method="post" action="save" cssClass="w3-container" commandName="invoice">
             <div class="w3-padding-8">
                 <label><b>InvoiceID</b></label>
-
+               <!--<div>
+                    <p>${invoice.customerId}</p>
+                </div>-->            
 
                 <form:input path="PurchaseOrder" cssClass="w3-input w3-border" placeholder="Purchase Order" />
                 <form:errors path="PurchaseOrder" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />              
@@ -38,6 +40,8 @@
                     });
                 </script>
 
+                <form:input path="CustomerId" cssClass="w3-input w3-border" placeholder="Customer ID"  />
+                <form:errors path="CustomerId" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="InvoiceDate" cssClass="w3-input w3-border" placeholder="Invoice Date"  />
                 <form:errors path="InvoiceDate" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="BillingAddress" cssClass="w3-input w3-border" placeholder="Billing Address"  />

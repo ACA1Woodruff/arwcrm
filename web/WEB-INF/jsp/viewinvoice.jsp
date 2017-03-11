@@ -37,13 +37,13 @@
 
         <c:forEach var="invoice" items="${list}">   
             <tr>  
-                <td>${invoice.invoiceID}</td>
+                <td>${invoice.InvoiceID}</td>
                 <td>${invoice.PurchaseOrder}</td>
                 <td>${invoice.CustomerID}</td>
 
                 <td>
                     <a href="<c:url value="/invoice/editinvoice/${invoice.invoiceID}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/invoice/deleteinvoice/${invoice.invoiceID}" />"><button class="w3-btn w3-round w3-red">Delete</button>onclick="return confirm('Are you sure you want to delete this user/client/interaction?');"</a>
+                    <a href="<c:url value="/invoice/deleteinvoice/${invoice.invoiceID}" />"><button class="w3-btn w3-round w3-red">Delete</button>onclick="return confirm('Are you sure you want to delete this invoice?');"</a>
                     <a href="<c:url value="/customer/customerform/${invoice.invoiceID}" />"><button class="w3-btn w3-round w3-green">Add Customer</button></a>
                 </td>  
             </tr>  

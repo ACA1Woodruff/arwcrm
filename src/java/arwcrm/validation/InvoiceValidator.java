@@ -28,7 +28,7 @@ public class InvoiceValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "invoiceID", "invoice.invoiceID.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "InvoiceId", "Invoice.InvoiceId.required");
 
     }
 }
