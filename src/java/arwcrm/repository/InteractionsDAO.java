@@ -73,15 +73,15 @@ public class InteractionsDAO {
     }
 
     public Interactions getInteractionsById(int interaction_id) {
-        String sql = "SELECT * from interactions WHERE interaction_id = ?";
+        String sql = "SELECT * from interactions WHERE interactionsid = ?";
         return template.queryForObject(sql, new Object[]{interaction_id}, new BeanPropertyRowMapper<Interactions>(Interactions.class));
     }
 
     public List<Interactions> getInteractionsByPage(int start, int total) {
-        String sql = "SELECT interactions.interaction_id, interactions.client_id, interactions.contact_date, interactions.first_name, interactions.last_name, interactions.notes, clients.client_id  "
+        String sql = "SELECT interactions.interactionsid, interactions.CustomerID, interactions.contact_date, interactions.first_name, interactions.last_name, interactions.notes, customer.CustomerID  "
                 + "FROM Interactions AS interactions "
-                + "INNER JOIN clients AS clients ON clients.client_id = interactions.client_id "
-                + "ORDER BY clients.last_name, interactions.contact_date "
+                + "INNER JOIN customer AS customer ON customer.customerID = interactions.CustomerID "
+                + "ORDER BY customer.customerName, interactions.contact_date "
                 + "LIMIT " + (start - 1) + "," + total;
         return template.query(sql, new RowMapper<Interactions>() {
             public Interactions mapRow(ResultSet rs, int row) throws SQLException {
@@ -94,8 +94,9 @@ public class InteractionsDAO {
                 i.setEmail(rs.getString(6));
                 i.setPhone(rs.getString(7));
                 i.setNotes(rs.getString(8));
-                i.setContact_date(rs.getString(9));
-                i.setCustomerID(rs.getInt(10));
+                
+                i.setContact_date(rs.getString(10));
+                i.setCustomerID(rs.getInt(11));
 
                 Customer customer = new Customer();
                 customer.setCustomerID(rs.getInt(1));
@@ -109,7 +110,7 @@ public class InteractionsDAO {
     }
 
     public int getInteractionsCount() {
-        String sql = "SELECT COUNT(interaction_id) AS rowcount FROM interactions";
+        String sql = "SELECT COUNT(interactionsid) AS rowcount FROM interactions";
         SqlRowSet rs = template.queryForRowSet(sql);
         if (rs.next()) {
             return rs.getInt("rowcount");
