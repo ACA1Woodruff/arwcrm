@@ -40,21 +40,22 @@ public class CustomerDAO {
      * @return
      */
     public int save(Customer customer) {
-        String sql = "INSERT INTO customer (`customerName`,`contactlastname`,`contactfirstname`,`customerphone`,`customeremail`,`customeraddress1`,`customeraddress2`,`customeraddress3`,`customercity`,`customerstate`,`customerpostalCode`,`customercountry`, `customercreditLimit`)"
-                + "values(?,?,?,?,?,?,?,?,?,?,?,?, ?)";
-        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry(), customer.getCreditLimit()};
+        String sql = "INSERT INTO customer (`customerName`,`contactLastName`,`contactFirstName`,`customerAddress1`,`customerAddress2`,`customerAddress3`,`customerPhone`,`customerEmail`,`customerCity`,`customerState`,`customerPostalCode`,`customerCountry`, `customerCreditLimit`)"
+                + "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getPhone(), customer.getEmail(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry(), customer.getCreditLimit()};
         return template.update(sql, values);
     }
 
     /**
+     * Customer update method and SQL query
      *
      * @param customer
      * @return
      */
     public int update(Customer customer) {
-        String sql = "UPDATE Customer SET `customerName` = ?,`contactLastName` = ?,`contactFirstName` = ?, `customerPhone` = ?, `customerEmail` = ?, `customerAddress1` = ?, `customerAddress2` = ?, `customerAddress3` = ?, `customerCity` = ?, `customerState` = ?, `customerPostalCode` = ?, `customerCountry` = ?, `customerCreditLimit` = ?"
+        String sql = "UPDATE Customer SET `customerName` = ?, `contactLastName` = ?, `contactFirstName` = ?, `customerAddress1` = ?, `customerAddress2` = ?, `customerAddress3` = ?, `customerPhone` = ?, `customerEmail` = ?, `customerCity` = ?, `customerState` = ?, `customerPostalCode` = ?, `customerCountry` = ?, `customerCreditLimit` = ?"
                 + " WHERE CustomerID = ?";
-        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getPhone(), customer.getEmail(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry(), customer.getCreditLimit(), customer.getCustomerID()};
+        Object[] values = {customer.getCustomerName(), customer.getCustomerContactLastName(), customer.getCustomerContactFirstName(), customer.getAddressLine1(), customer.getAddressLine2(), customer.getAddressLine3(), customer.getPhone(), customer.getEmail(), customer.getCity(), customer.getState(), customer.getPostalCode(), customer.getCountry(), customer.getCreditLimit(), customer.getCustomerID()};
         return template.update(sql, values);
     }
 
@@ -64,7 +65,7 @@ public class CustomerDAO {
      * @return
      */
     public int delete(int CustomerID) {
-        String sql = "DELETE FROM Customer WHERE CustomerID = ?";
+        String sql = "DELETE FROM Customer WHERE CustomerID=" + CustomerID + "";
         Object[] values = {CustomerID};
         return template.update(sql, values);
     }
@@ -75,24 +76,24 @@ public class CustomerDAO {
      */
     public List<Customer> getCustomerList() {
         return template.query("SELECT * FROM Customer", new RowMapper<Customer>() {
+            @Override
             public Customer mapRow(ResultSet rs, int row) throws SQLException {
-                Customer a = new Customer();
-                a.setCustomerID(rs.getInt("CustomerID"));
-                a.setCustomerName(rs.getString("customerName"));
-                a.setCustomerContactLastName(rs.getString("CustomerContactLastName"));
-                a.setCustomerContactFirstName(rs.getString("CustomerContactFirstName"));
-                a.setPhone(rs.getString("Phone"));
-                a.setEmail(rs.getString("Email"));
-                a.setAddressLine1(rs.getString("AddressLine1"));
-                a.setAddressLine1(rs.getString("AddressLine2"));
-                a.setAddressLine1(rs.getString("AddressLine3"));
-                a.setCity(rs.getString("City"));
-                a.setState(rs.getString("State"));
-                a.setPostalCode(rs.getString("PostalCode"));
-                a.setCountry(rs.getString("Country"));
-//                a.setSalesRepEmployeeNumber(rs.getString("SalesRepEmployeeNumber"));
-                a.setCreditLimit(rs.getString("CreditLimit"));
-                return a;
+                Customer c = new Customer();
+                c.setCustomerID(rs.getInt("CustomerID"));
+                c.setCustomerName(rs.getString("customerName"));
+                c.setCustomerContactLastName(rs.getString("ContactLastName"));
+                c.setCustomerContactFirstName(rs.getString("ContactFirstName"));
+                c.setPhone(rs.getString("Phone"));
+                c.setEmail(rs.getString("Email"));
+                c.setAddressLine1(rs.getString("AddressLine1"));
+                c.setAddressLine1(rs.getString("AddressLine2"));
+                c.setAddressLine1(rs.getString("AddressLine3"));
+                c.setCity(rs.getString("City"));
+                c.setState(rs.getString("State"));
+                c.setPostalCode(rs.getString("PostalCode"));
+                c.setCountry(rs.getString("Country"));
+                c.setCreditLimit(rs.getString("CreditLimit"));
+                return c;
             }
         });
     }
@@ -118,22 +119,19 @@ public class CustomerDAO {
                 c.setCustomerName(rs.getString(2));
                 c.setCustomerContactLastName(rs.getString(3));
                 c.setCustomerContactFirstName(rs.getString(4));
-                c.setPhone(rs.getString(5));
-                c.setEmail(rs.getString(6));
-                c.setAddressLine1(rs.getString(7));
-                c.setAddressLine2(rs.getString(8));
-                c.setAddressLine3(rs.getString(9));
+                c.setAddressLine1(rs.getString(5));
+                c.setAddressLine2(rs.getString(6));
+                c.setAddressLine3(rs.getString(7));
+                c.setPhone(rs.getString(8));
+                c.setEmail(rs.getString(9));
                 c.setCity(rs.getString(10));
                 c.setState(rs.getString(11));
                 c.setPostalCode(rs.getString(12));
                 c.setCountry(rs.getString(13));
-//              c.setSalesRepEmployeeNumber(rs.getString(13));
                 c.setCreditLimit(rs.getString(14));
                 return c;
             }
-
         });
-
     }
 
     public int getCustomerCount() {
@@ -156,5 +154,32 @@ public class CustomerDAO {
             customer.put(rs.getInt(1), rs.getString(2));
         }
         return customer;
+    }
+
+    /**
+     * List<Customer> getLastCustomer method and SQL Query
+     *
+     * @return
+     */
+    public List<Customer> getLastCustomer() {
+        String sql = "SELECT * FROM customer Order by CustomerID Desc Limit 5";
+        return template.query(sql, (ResultSet rs, int row) -> {
+            Customer c = new Customer();
+            c.setCustomerID(rs.getInt(1));
+            c.setCustomerName(rs.getString(2));
+            c.setCustomerContactLastName(rs.getString(3));
+            c.setCustomerContactFirstName(rs.getString(4));
+            c.setAddressLine1(rs.getString(5));
+            c.setAddressLine2(rs.getString(6));
+            c.setAddressLine3(rs.getString(7));
+            c.setPhone(rs.getString(8));
+            c.setEmail(rs.getString(9));
+            c.setCity(rs.getString(10));
+            c.setState(rs.getString(11));
+            c.setPostalCode(rs.getString(12));
+            c.setCountry(rs.getString(13));
+            c.setCreditLimit(rs.getString(14));
+            return c;
+        });
     }
 }

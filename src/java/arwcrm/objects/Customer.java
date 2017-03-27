@@ -53,8 +53,6 @@ public class Customer implements Serializable {
         this.CustomerID = CustomerID;
     }
 
-    
-
     public String getCustomerName() {
         return customerName;
     }

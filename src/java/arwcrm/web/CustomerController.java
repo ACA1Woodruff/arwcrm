@@ -127,6 +127,7 @@ public class CustomerController {
     @RequestMapping(value = "/customer/editcustomer/{id}")
     public ModelAndView edit(@PathVariable int id) {
         Customer customer = cdao.getCustomerById(id);
+
         return new ModelAndView("customereditform", "customer", customer);
     }
 

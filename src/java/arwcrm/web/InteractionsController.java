@@ -1,24 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package arwcrm.web;
 
-import java.util.ArrayList;
 import arwcrm.validation.InteractionsValidator;
 import arwcrm.objects.Message;
 import arwcrm.objects.Interactions;
 import arwcrm.repository.InteractionsDAO;
+import arwcrm.repository.CustomerDAO;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,19 +35,15 @@ public class InteractionsController {
     @Autowired
     private InteractionsValidator interactionsValidator;
 
-    private static final Logger logger = Logger.getLogger(InteractionsController.class.getName());
-
+//    private static final Logger logger = Logger.getLogger(InteractionsController.class.getName());
     @RequestMapping("/interactions/interactionsform")
     public ModelAndView showform() {
         return new ModelAndView("interactionsform", "interactions", new Interactions());
     }
 
     @RequestMapping(value = "/interactions/save", method = RequestMethod.POST)
-    public ModelAndView save(@ModelAttribute("interactions") @Valid Interactions interactions, BindingResult result, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            return new ModelAndView("interactionsform", "interactions", interactions);
-        }
-
+    public ModelAndView save(@ModelAttribute("interactions") Interactions interactions, HttpServletRequest request) {
+        
         int r = dao.save(interactions);
 
         Message msg = null;
@@ -102,17 +93,17 @@ public class InteractionsController {
         return new ModelAndView("viewinteractions", context);
     }
 
-    @RequestMapping(value = "/interactions/editinteractions/{interaction_id}")
-    public ModelAndView edit(@PathVariable int interaction_id) {
-        Interactions interactions = dao.getInteractionsById(interaction_id);
+    @RequestMapping(value = "/interactions/editinteractions/{interactions_id}")
+    public ModelAndView edit(@PathVariable int interactions_id) {
+        Interactions interactions = dao.getInteractionsById(interactions_id);
         return new ModelAndView("interactionseditform", "interactions", interactions);
     }
 
     @RequestMapping(value = "/interactions/editsave", method = RequestMethod.POST)
-    public ModelAndView editsave(@ModelAttribute("interactions") @Valid Interactions interactions, BindingResult result, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            return new ModelAndView("interactionseditform", "interactions", interactions);
-        }
+    public ModelAndView editsave(@ModelAttribute("interactions") Interactions interactions, HttpServletRequest request) {
+//        if (result.hasErrors()) {
+//            return new ModelAndView("interactionseditform", "interactions", interactions);
+//        }
         int r = dao.update(interactions);
 
         Message msg = null;
@@ -127,9 +118,9 @@ public class InteractionsController {
         return new ModelAndView("redirect:/interactions/viewinteractions");
     }
 
-    @RequestMapping(value = "/interactions/deleteinteractions/{interaction_id}", method = RequestMethod.GET)
-    public ModelAndView delete(@PathVariable int interaction_id, HttpServletRequest request) {
-        int r = dao.delete(interaction_id);
+    @RequestMapping(value = "/interactions/deleteinteractions/{interactions_id}", method = RequestMethod.GET)
+    public ModelAndView delete(@PathVariable int interactions_id, HttpServletRequest request) {
+        int r = dao.delete(interactions_id);
 
         Message msg = null;
         if (r == 1) {

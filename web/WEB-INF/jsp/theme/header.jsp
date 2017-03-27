@@ -39,6 +39,7 @@
                         <a href="#" class="w3-hover-none w3-hover-text-green w3-show-inline-block"><i class="fa fa-user"></i></a>
                         <a href="#" class="w3-hover-none w3-hover-text-blue w3-show-inline-block"><i class="fa fa-cog"></i></a>
                         -->
+
                     </sec:authorize>
                 </div>
             </div>
@@ -49,61 +50,77 @@
 
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <div class="w3-dropdown-hover">
-                    <a href="<c:url value="/customer/viewcustomer" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Customer  <i class="fa fa-caret-down"></i></a>
-                    <div class="w3-dropdown-content w3-white w3-card-4">
-                        <a class="w3-padding w3-dark-grey" href="<c:url value="/customer/customerform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Customer</a>
-                    </div>
+                    <a href="<c:url value="/customer/viewcustomer" />" class="w3-padding w3-blue"><i class="fa fa-neuter fa-fw"></i>  Customer  <i class="fa fa-caret-down"></i></a>
+                    <!--<div class="w3-dropdown-content w3-white w3-card-4">-->
+                    <a href="<c:url value="/customer/customerform" />" class="w3-padding w3-blue"><i class="fa fa-neuter fa-fw"></i>  Add Customer  <i class="fa fa-caret-down"></i></a>
+                <!--<a class="w3-padding w3-dark-grey" href="<c:url value="/customer/customerform" />"w3-padding w3-blue"><i class="fa fa-plus-square fa-fw"></i>  Add Customer</a>-->
                 </div>
+            </div>
 
-                <div class="w3-dropdown-hover">
-                    <a href="<c:url value="/employee/viewemployee" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Employee  <i class="fa fa-caret-down"></i></a>
-                    <div class="w3-dropdown-content w3-white w3-card-4">
-                        <a class="w3-padding w3-dark-grey" href="<c:url value="/employee/employeeform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Employee</a>
-                    </div>
-                </div>
+            <div class="w3-dropdown-hover">
+                <a href="<c:url value="/employee/viewemployee" />" class="w3-padding w3-blue"><i class="fa fa-neuter fa-fw"></i>  Employee  <i class="fa fa-caret-down"></i></a>
+                <!--<div class="w3-dropdown-content w3-white w3-card-4">-->
+                <a class="w3-padding w3-dark-grey" href="<c:url value="/employee/employeeform" />"><i class="fa fa-neuter fa-fw"></i>  Add Employee  <i class="fa fa-caret-down"></i></a>
+            </div>
+        </div>
 
-                <div class="w3-dropdown-hover">
-                    <a href="<c:url value="/invoice/viewinvoice" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Invoice  <i class="fa fa-caret-down"></i></a>
-                    <div class="w3-dropdown-content w3-white w3-card-4">
-                        <a class="w3-padding w3-dark-grey" href="<c:url value="/invoice/invoiceform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Invoice</a>
-                    </div>
-                </div>
+        <div class="w3-dropdown-hover">
+            <a href="<c:url value="/invoice/viewinvoice" />" class="w3-padding w3-blue"><i class="fa fa-neuter fa-fw"></i>  Invoice  <i class="fa fa-caret-down"></i></a>
+            <!--<div class="w3-dropdown-content w3-white w3-card-4">-->
+            <a class="w3-padding w3-dark-grey" href="<c:url value="/invoice/invoiceform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Invoice <i class="fa fa-caret-down"></i></a>
+        </div>
+    </div>
 
-                <div class="w3-dropdown-hover">
-                    <a href="<c:url value="/interactions/viewinteractions" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Interactions  <i class="fa fa-caret-down"></i></a>
-                    <div class="w3-dropdown-content w3-white w3-card-4">
-                        <a class="w3-padding w3-dark-grey" href="<c:url value="/interactions/interactionsform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Interactions</a>
-                    </div>
-                </div>    
-
-
-                <div class="w3-dropdown-hover">
-                    <a href="<c:url value="/user/viewuser" />" class="w3-padding w3-blue"><i class="fa fa-music fa-fw"></i>  Users  <i class="fa fa-caret-down"></i></a>
-                    <div class="w3-dropdown-content w3-white w3-card-4">
-                        <a class="w3-padding w3-dark-grey" href="<c:url value="/user/userform" />"><i class="fa fa-plus-square fa-fw"></i>  Add User</a>
-                    </div>
-                </div>
-            </sec:authorize>
-
-            <!--
-            <a href="#" class="w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
-            <a href="#" class="w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
-            <a href="#" class="w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
-            <a href="#" class="w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
-            <a href="#" class="w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
-            <a href="#" class="w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
-            <a href="#" class="w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-            -->
-            <a href="#" onclick="logoutFormSubmit();" class="w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Logout</a><br><br>
-
-            <form action="<c:url value="/j_spring_security_logout" />" method="post" id="logoutForm">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-            </form>
-        </nav>
+    <div class="w3-dropdown-hover">
+        <a href="<c:url value="/interactions/viewinteractions" />" class="w3-padding w3-blue"><i class="fa fa-neuter fa-fw"></i>  Interactions  <i class="fa fa-caret-down"></i></a>
+        <!--<div class="w3-dropdown-content w3-white w3-card-4">-->
+        <a class="w3-padding w3-dark-grey" href="<c:url value="/interactions/interactionsform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Interactions <i class="fa fa-caret-down"></i></a>
+    </div>
+</div>    
 
 
-        <!-- Overlay effect when opening sidenav on small screens -->
-        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-dropdown-hover">
+    <a href="<c:url value="/user/viewuser" />" class="w3-padding w3-blue"><i class="fa fa-neuter fa-fw"></i>  User  <i class="fa fa-caret-down"></i></a>
+    <!--<div class="w3-dropdown-content w3-white w3-card-4">-->
+    <a class="w3-padding w3-dark-grey" href="<c:url value="/user/userform" />"><i class="fa fa-plus-square fa-fw"></i>  Add User <i class="fa fa-caret-down"></i></a>
+</div>
+</div>
+</sec:authorize>
 
-        <!-- !PAGE CONTENT! -->
-        <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+<!--
+<a href="#" class="w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
+<a href="#" class="w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
+<a href="#" class="w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
+<a href="#" class="w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
+<a href="#" class="w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
+<a href="#" class="w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
+<a href="#" class="w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>-->
+
+
+<script>
+    function myAccFunc(elem) {
+        var x = elem.nextElementSibling;
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+            x.previousElementSibling.className += " #98c8de";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+            x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" w3-green", "");
+        }
+    }
+</script>
+
+<a href="#" onclick="logoutFormSubmit();" class="w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Logout</a><br><br>
+
+<form action="<c:url value="/j_spring_security_logout" />" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
+</nav>
+
+
+<!-- Overlay effect when opening sidenav on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">

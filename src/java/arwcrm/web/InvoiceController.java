@@ -44,12 +44,11 @@ public class InvoiceController {
     @Autowired
     InvoiceDAO idao = new InvoiceDAO();
 
-    @Autowired
-    JobCategoryDAO jcdao = new JobCategoryDAO();
-
-    @Autowired
-    JobProfilesDAO jpdao = new JobProfilesDAO();
-
+//    @Autowired
+//    JobCategoryDAO jcdao = new JobCategoryDAO();
+//
+//    @Autowired
+//    JobProfilesDAO jpdao = new JobProfilesDAO();
 //    @Autowired
 //    private InvoiceValidator invoiceValidator;
     private static final Logger logger = Logger.getLogger(InvoiceController.class.getName());
@@ -62,16 +61,16 @@ public class InvoiceController {
         return new ModelAndView("invoiceform", "invoice", new Invoice());
     }
 
-    @RequestMapping("/invoice/invoiceform/{id}")
+    @RequestMapping("/invoice/invoiceform/{InvoiceID}")
     public ModelAndView showformWithCustomer(@PathVariable int id) {
         Customer customer = cdao.getCustomerById(id);
 
         Invoice invoice = new Invoice();
-        invoice.setCustomerId(id);
+        invoice.setCustomerID(id);
         invoice.setCustomer(customer);
         invoice.setCustomer((Customer) cdao.getCustomerMap());
 
-        return new ModelAndView("invoiceform", "command", invoice);
+        return new ModelAndView("invoiceform", "invoice", invoice);
     }
 
     @RequestMapping(value = "/invoice/save", method = RequestMethod.POST)
@@ -135,7 +134,11 @@ public class InvoiceController {
     }
 
     @RequestMapping(value = "/invoice/editsave", method = RequestMethod.POST)
-    public ModelAndView editsave(@ModelAttribute("invoice") Invoice invoice, HttpServletRequest request) {
+    public ModelAndView editsave(@ModelAttribute("invoice") @Valid Invoice invoice, BindingResult result, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            return new ModelAndView("invoiceeditform", "invoice", invoice);
+        }
+
         int r = idao.update(invoice);
 
         Message msg = null;
@@ -165,4 +168,29 @@ public class InvoiceController {
 
         return new ModelAndView("redirect:/invoice/viewinvoice");
     }
+
+//    /**
+//     *
+//     * @param webDataBinder
+//     */
+//    @InitBinder("invoice")
+//    public void initBinder(WebDataBinder webDataBinder) {
+//        webDataBinder.setValidator(invoiceValidator);
+//    }
+//
+//    /**
+//     *
+//     * @return
+//     */
+//    public InvoiceValidator getInvoiceValidator() {
+//        return invoiceValidator;
+//    }
+//
+//    /**
+//     *
+//     * @param customerValidator
+//     */
+//    public void setInvoiceValidator(InvoiceValidator invoiceValidator) {
+//        this.invoiceValidator = invoiceValidator;
+//    }
 }

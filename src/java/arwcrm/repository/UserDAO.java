@@ -28,24 +28,25 @@ public class UserDAO {
     }
 
     public int save(User user) {
-        String sql = "INSERT INTO users (username, password, name) values(?, md5(?), ?)";
+        String sql = "INSERT INTO users (`username`, `password`, `enabled`, `name`, `role`)"
+                + " values(?, md5(?),?, ?)";
 
-        Object[] values = {user.getUsername(), user.getPassword(), user.getName()};
+        Object[] values = {user.getUsername(), user.getPassword(), user.getEnabled(), user.getName()};
+        int r = template.update(sql, values);
 
         logger.info("User DAO save values: " + values);
 
-        int r = template.update(sql, values);
+        sql = "INSERT INTO user_roles (username ) VALUES (?,?)";
 
-        sql = "INSERT INTO user_roles (username, role) VALUES (?, ?)";
-
-        for (String role : user.getRoles()) {
-            Object[] role_values = {user.getUsername(), role};
+        for (String rolelist : user.getRolelist()) {
+            Object[] role_values = {user.getUsername(), rolelist};
 
             logger.info("User DAO add role: " + values);
 
             template.update(sql, role_values);
         }
 
+//       + " VALUES (?, md5(?), ?, ?)";
         // for this example we are going to return the insert of the user. 
         // we could do some more work here to make sure the roles went in, 
         // but the user is what is important.

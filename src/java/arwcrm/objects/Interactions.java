@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package arwcrm.objects;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -15,7 +11,7 @@ import java.util.Map;
  */
 public class Interactions implements Serializable {
 
-    private int interaction_id;
+    private int interactions_id;
     private String first_name;
     private String last_name;
     private String status;
@@ -23,36 +19,51 @@ public class Interactions implements Serializable {
     private String email;
     private String phone;
     private String notes;
-    private Map<String, String> contact_type;
-    private String contact_date;
-    private int CustomerID;
-    private Map<String, String> statusMap;
+    private Date contact_date;
+    private Customer customer;
+    private int Customer_ID;
+    private Map<String, String> method_of_contactMap;
+    private Map<Integer, String> CustomersMap;
 
-    public Map<String, String> getStatusMap() {
-        this.statusMap = new LinkedHashMap<String, String>();
-        this.statusMap.put("Active", "Active");
-        this.statusMap.put("Inactive", "Inactive");
-        this.statusMap.put("prospect", "Prospect");
+//    public Map<String, String> getStatusMap() {
+//        this.statusMap = new LinkedHashMap<String, String>();
+//        this.statusMap.put("Active", "Active");
+//        this.statusMap.put("Inactive", "Inactive");
+//        this.statusMap.put("Prospect", "Prospect");
+//        return statusMap;
+//    }
+    public Map<String, String> getMethod_of_contactMap() {
 
-        return statusMap;
+        this.method_of_contactMap = new LinkedHashMap<String, String>();
+        this.method_of_contactMap.put("Direct", "Direct");
+        this.method_of_contactMap.put("Phone", "Phone");
+        this.method_of_contactMap.put("Email", "Email");
+        this.method_of_contactMap.put("Message", "Message");
+        return method_of_contactMap;
     }
 
-    public Map<String, String> getContact_type() {
-        contact_type = new LinkedHashMap<>();
-        contact_type.put("Direct", "Direct");
-        contact_type.put("Phone", "Phone");
-        contact_type.put("Email", "Email");
-        contact_type.put("Message", "Message");
-
-        return contact_type;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public int getInteraction_id() {
-        return interaction_id;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public void setInteraction_id(int interaction_id) {
-        this.interaction_id = interaction_id;
+//    public int getCustomerID() {
+//        return CustomerID;
+//    }
+//    
+//    public void setCustomerID(int CustomerID) {
+//        this.CustomerID = CustomerID;
+//    }
+    
+    public int getInteractions_id() {
+        return interactions_id;
+    }
+
+    public void setInteractions_id(int interactions_id) {
+        this.interactions_id = interactions_id;
     }
 
     public String getFirst_name() {
@@ -111,25 +122,33 @@ public class Interactions implements Serializable {
         this.notes = notes;
     }
 
-    public String getContact_date() {
+    public Date getContact_date() {
         return contact_date;
     }
 
-    public void setContact_date(String contact_date) {
+    public void setContact_date(Date contact_date) {
         this.contact_date = contact_date;
     }
 
-    public int getCustomerID() {
-        return CustomerID;
+    public int getCustomer_ID() {
+        return Customer_ID;
     }
 
-    public void setCustomerID(int CustomerID) {
-        this.CustomerID = CustomerID;
+    public void setCustomer_ID(int Customer_ID) {
+        this.Customer_ID = Customer_ID;
     }
 
-//    public String toString() {
-//        StringBuffer buffer = new StringBuffer();
-//        buffer.append("ID: " + this.interaction_id + ";");
+    public Map<Integer, String> getCustomersMap() {
+        return CustomersMap;
+    }
+
+  public void setCustomer(Map<Integer, String> CustomersMap){
+      this.CustomersMap = CustomersMap;
+  }   
+    
+    public String toString() {
+        StringBuffer buffer = new StringBuffer();
+//        buffer.append("ID: " + this.interactions_id + ";");
 //        buffer.append("First Name: " + first_name);
 //        buffer.append("Last Name: " + last_name);
 //        buffer.append("Status: " + status);
@@ -138,7 +157,7 @@ public class Interactions implements Serializable {
 //        buffer.append("Phone: " + phone);
 //        buffer.append("Notes: " + notes);
 //        buffer.append("Contact Date: " + contact_date);
-//        buffer.append("Customer ID: " + this.CustomerID + ";");
-//        return buffer.toString();
-//    }
+//        buffer.append("Customer ID: " + this.Customer_ID + ";");
+        return buffer.toString();
+    }
 }

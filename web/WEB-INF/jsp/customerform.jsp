@@ -14,7 +14,7 @@
             <h2>Customer Information</h2>
         </div>
 
-        <form:form method="post" action="save" cssClass="w3-container" commandName="customer">
+        <form:form method="post" action="/arwcrm/customer/save" cssClass="w3-container" commandName="customer">
             <div class="w3-padding-8">
                 <!--<label><b>Name</b></label>-->
 

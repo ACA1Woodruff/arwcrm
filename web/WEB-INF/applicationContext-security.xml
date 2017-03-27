@@ -6,8 +6,8 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
-  <!--
-  <http auto-config="true" use-expressions="true">
+  
+  <!--<http auto-config="true" use-expressions="true">
     <intercept-url pattern="/customerform**" access="hasRole('ROLE_USER')" />
     <intercept-url pattern="/api/**" access="hasRole('ROLE_USER')" />
   </http>
@@ -18,8 +18,8 @@
           <user name="mkyong" password="123456" authorities="ROLE_USER" />
         </user-service>
       </authentication-provider>
-    </authentication-manager>
-    -->
+    </authentication-manager>-->
+    
   
   
     <!-- enable use-expressions -->

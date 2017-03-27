@@ -58,19 +58,12 @@
             </div>
 
             <!--<div class="w3-padding-8">
-                <label><b>File Number</b></label>-->
+                <label><b>File Number</b></label>
+            </div>-->
             
-        <!--</div>
-        <div class="w3-padding-8">
+       
+     <!--<div class="w3-padding-8">
             <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
-        </div>
-
-        </div>
-
-    </div>
-
-    <%@ include file="theme/footer.jsp" %>
-
 </div>-->
 
 <c:choose>

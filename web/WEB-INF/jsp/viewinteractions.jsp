@@ -1,5 +1,5 @@
 <%-- 
-    Document   : viewinteractions1
+    Document   : viewinteractions
     Created on : Mar 9, 2017, 10:47:07 AM
     Author     : awood
 --%>
@@ -27,27 +27,26 @@
 
     </c:if>
 
-               
+
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
         <tr>
-            <th>Interaction Id</th>
-            <th>Customer Id</th>
-            <th>Contact Date</th>
-            
-            
+            <th>Interactions ID</th>
+            <th>Customer ID</th>
+            <th>Contact Date</th>            
             <th>Action</th>
         </tr>  
 
-        <c:forEach var="interaction" items="${list}">   
+        <c:forEach var="interactions" items="${list}">   
             <tr> 
-                <td>${interaction.interaction_id}</td>
-                <td>${interaction.CustomerID}</td>
-                <td>${interaction.contact_date}</td>
-               
-                
+                <td>${interactions.interactions_id}</td>
+                <td>${interactions.customer_ID}</td>
+                <td>${interactions.contact_date}</td>
+
+
                 <td>
-                    <a href="<c:url value="/interactions/editinteractions/${interaction.interaction_id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-                    <a href="<c:url value="/interactions/deleteinteractions/${interaction.interaction_id}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this Interaction?');">Delete</button></a>
+                    <a href="<c:url value="/interactions/editinteractions/${interactions.interactions_id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
+                    <a href="<c:url value="/interactions/deleteinteractions/${interactions.interactions_id}" />"><button class="w3-btn w3-round w3-red" onclick="return confirm('Are you sure you want to delete this interaction?');">Delete</button></a>
+                    <a href="<c:url value="/customer/customerform/${interactions.interactions_id}" />"><button class="w3-btn w3-round w3-green">Add Customer</button></a>
                 </td>  
             </tr>  
         </c:forEach>  

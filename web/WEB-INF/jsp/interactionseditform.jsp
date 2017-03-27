@@ -10,7 +10,7 @@
 <%@ include file="theme/header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Manage Invoice > Add Invoice</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Manage Interactions > Add Interactions</b></h5>
 </header>
 
 <div class="w3-row-padding w3-half w3-margin-bottom">
@@ -20,9 +20,9 @@
             <h2>Interactions Information</h2>
         </div>
 
-        <form:form method="post" action="save" cssClass="w3-container" commandName="interaction">
+        <form:form method="post" action="/arwcrm/interactions/editsave" cssClass="w3-container" commandName="interactions">
             <div class="w3-padding-8">
-                <!--<label><b>InteractionsID</b></label>-->
+               <label><b>Interactions ID</b></label>
 
                 <form:input path="first_name" cssClass="w3-input w3-border" placeholder="First Name" />
                 <form:errors path="first_name" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
@@ -38,8 +38,8 @@
                 <form:errors path="phone" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="notes" cssClass="w3-input w3-border" placeholder="Notes"  />
                 <form:errors path="notes" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="contact_type" cssClass="w3-input w3-border" placeholder="Contact Type"  />
-                <form:errors path="contact_type" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+                <!--<form:input path="contact_type" cssClass="w3-input w3-border" placeholder="Contact Type"  />
+                <form:errors path="contact_type" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />-->
 
                 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
                 <link rel="stylesheet" href="/resources/demos/style.css">

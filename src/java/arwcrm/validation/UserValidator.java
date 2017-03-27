@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -23,6 +24,7 @@ public class UserValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "user.name.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "user.username.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "user.password.required");
     }
