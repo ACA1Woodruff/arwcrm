@@ -89,8 +89,9 @@ public class UserController {
     }
 
     public void setArtistValidator(UserValidator artistValidator) {
-        this.userValidator = artistValidator;
+      this.userValidator = artistValidator;
     }
+}
 //    @Autowired
 //    CustomerDAO cdao = new CustomerDAO();
 //
@@ -109,7 +110,7 @@ public class UserController {
 //    public ModelAndView showform() {
 //        Employee employee = new Employee();
 //        employee.setCustomers(cdao.getCustomersMap());
-//
+
 //        return new ModelAndView("employeeform", "command", employee);
 //    }
 //
@@ -218,4 +219,3 @@ public class UserController {
 //
 //        return new ModelAndView("redirect:/employee/viewemployee");
 //    }
-}
